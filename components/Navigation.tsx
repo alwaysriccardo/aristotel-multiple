@@ -22,23 +22,23 @@ const Navigation: React.FC = () => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 w-full p-6 md:p-8 flex justify-between items-center z-50 mix-blend-difference text-white">
-        <div className="font-display font-bold text-lg md:text-xl tracking-tighter">
+      <nav className="fixed top-0 left-0 w-full p-6 md:p-8 flex justify-between items-center z-[60] text-white">
+        <div className={`font-display font-bold text-lg md:text-xl tracking-tighter ${!isMenuOpen ? 'mix-blend-difference' : ''}`}>
           ARISTOTEL
         </div>
         
-        <div className="hidden md:flex gap-10 text-xs uppercase tracking-[0.2em] font-medium">
+        <div className="hidden md:flex gap-10 text-xs uppercase tracking-[0.2em] font-medium mix-blend-difference">
           <a href="#projects" className="hover:text-swiss-gold transition-colors">Projects</a>
           <a href="#services" className="hover:text-swiss-gold transition-colors">Services</a>
           <a href="#contact" className="hover:text-swiss-gold transition-colors">Contact</a>
         </div>
         
         <button 
-          className="md:hidden z-[60] relative mix-blend-difference"
+          className={`md:hidden relative transition-all duration-300 ${!isMenuOpen ? 'mix-blend-difference' : 'text-white'}`}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
         >
-          {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          {isMenuOpen ? <X size={32} strokeWidth={2.5} /> : <Menu size={28} />}
         </button>
       </nav>
 
