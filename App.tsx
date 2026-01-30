@@ -442,17 +442,17 @@ const App: React.FC = () => {
 
         <div className="footer-content relative z-10 px-4 w-full max-w-6xl mx-auto">
           
-          <div className="grid md:grid-cols-2 gap-6 md:gap-12 items-start">
+          <div className="grid md:grid-cols-2 gap-6 md:gap-12 items-end">
             
-            {/* Left Column: Contact Button (mobile only) + Form */}
-            <div className="space-y-6 md:space-y-0">
-              {/* Contact Us Button - Mobile Only */}
-              <div className="text-center md:hidden">
-                <p className="text-[10px] uppercase tracking-[0.3em] mb-4 text-[#8B7355]">Request a Free Quote</p>
+            {/* Left Column: Contact Button + Form (desktop: button above form) */}
+            <div className="space-y-6">
+              {/* Contact Us Button - Desktop */}
+              <div className="hidden md:block text-center">
+                <p className="text-sm uppercase tracking-[0.4em] mb-6 text-[#8B7355]">Request a Free Quote</p>
                 
                 <a 
                   href={`mailto:${CONTACT_INFO.email}`} 
-                  className="inline-block font-display text-[9vw] sm:text-[8vw] leading-none text-swiss-dark hover:text-swiss-gold transition-all duration-300 mb-3 relative overflow-hidden group/btn cursor-pointer active:scale-95"
+                  className="inline-block font-display text-[5vw] leading-none text-swiss-dark hover:text-swiss-gold transition-all duration-300 mb-4 relative overflow-hidden group/btn cursor-pointer active:scale-95"
                   style={{
                     textShadow: '1px 1px 0px rgba(197, 160, 89, 0.3), 2px 2px 0px rgba(197, 160, 89, 0.2), 3px 3px 0px rgba(197, 160, 89, 0.1)',
                     transform: 'translateZ(0)',
@@ -469,7 +469,7 @@ const App: React.FC = () => {
                   <div className="absolute inset-0 -translate-x-full animate-shine bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
                 </a>
                 
-                <p className="text-xs font-serif italic text-[#6B5D4F] animate-pulse">
+                <p className="text-base font-serif italic text-[#6B5D4F] animate-pulse">
                   Click to get your personalized quote today →
                 </p>
               </div>
@@ -519,41 +519,47 @@ const App: React.FC = () => {
               </div>
             </div>
 
-            {/* Right Column: Contact Information + Contact Button (desktop) */}
-            <div className="space-y-5 md:space-y-8">
-              <div className="flex items-start gap-3 md:gap-4 group">
-                <a 
-                  href={`tel:${CONTACT_INFO.phone}`}
-                  className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 bg-swiss-gold/20 rounded-full flex items-center justify-center hover:bg-swiss-gold hover:scale-110 transition-all duration-300 cursor-pointer group-hover:rotate-12"
-                >
-                  <Phone className="text-swiss-dark w-4 h-4 md:w-5 md:h-5" />
-                </a>
-                <div className="min-w-0 flex-1">
-                  <p className="font-serif italic text-base md:text-xl text-swiss-dark mb-1">Phone</p>
-                  <a href={`tel:${CONTACT_INFO.phone}`} className="text-[#6B5D4F] hover:text-swiss-dark transition-colors text-sm md:text-lg">{CONTACT_INFO.phone}</a>
+            {/* Right Column: Contact Information (Mobile: compact layout) */}
+            <div className="space-y-4 md:space-y-8">
+              {/* Mobile: Phone and Email side by side */}
+              <div className="grid grid-cols-2 gap-3 md:flex md:flex-col md:gap-8">
+                {/* Phone */}
+                <div className="flex flex-col md:flex-row items-start gap-2 md:gap-4 group">
+                  <a 
+                    href={`tel:${CONTACT_INFO.phone}`}
+                    className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 bg-swiss-gold/20 rounded-full flex items-center justify-center hover:bg-swiss-gold hover:scale-110 transition-all duration-300 cursor-pointer group-hover:rotate-12"
+                  >
+                    <Phone className="text-swiss-dark w-4 h-4 md:w-5 md:h-5" />
+                  </a>
+                  <div className="min-w-0 flex-1">
+                    <p className="font-serif italic text-sm md:text-xl text-swiss-dark mb-1">Phone</p>
+                    <a href={`tel:${CONTACT_INFO.phone}`} className="text-[#6B5D4F] hover:text-swiss-dark transition-colors text-xs md:text-lg">{CONTACT_INFO.phone}</a>
+                  </div>
+                </div>
+                
+                {/* Email */}
+                <div className="flex flex-col md:flex-row items-start gap-2 md:gap-4 group">
+                  <a
+                    href={`mailto:${CONTACT_INFO.email}`}
+                    className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 bg-swiss-gold/20 rounded-full flex items-center justify-center hover:bg-swiss-gold hover:scale-110 transition-all duration-300 cursor-pointer group-hover:rotate-12"
+                  >
+                    <Mail className="text-swiss-dark w-4 h-4 md:w-5 md:h-5" />
+                  </a>
+                  <div className="min-w-0 flex-1">
+                    <p className="font-serif italic text-sm md:text-xl text-swiss-dark mb-1">Email</p>
+                    <a href={`mailto:${CONTACT_INFO.email}`} className="text-[#6B5D4F] hover:text-swiss-dark transition-colors text-xs md:text-lg break-all">{CONTACT_INFO.email}</a>
+                  </div>
                 </div>
               </div>
               
-              <div className="flex items-start gap-3 md:gap-4 group">
-                <a
-                  href={`mailto:${CONTACT_INFO.email}`}
-                  className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 bg-swiss-gold/20 rounded-full flex items-center justify-center hover:bg-swiss-gold hover:scale-110 transition-all duration-300 cursor-pointer group-hover:rotate-12"
-                >
-                  <Mail className="text-swiss-dark w-4 h-4 md:w-5 md:h-5" />
-                </a>
-                <div className="min-w-0 flex-1">
-                  <p className="font-serif italic text-base md:text-xl text-swiss-dark mb-1">Email</p>
-                  <a href={`mailto:${CONTACT_INFO.email}`} className="text-[#6B5D4F] hover:text-swiss-dark transition-colors text-sm md:text-lg break-all">{CONTACT_INFO.email}</a>
-                </div>
-              </div>
-              
+              {/* Address - Full width on mobile */}
               <div className="flex items-start gap-3 md:gap-4">
                 <div className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 bg-swiss-gold/20 rounded-full flex items-center justify-center">
                   <MapPin className="text-swiss-dark w-4 h-4 md:w-5 md:h-5" />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <p className="font-serif italic text-base md:text-xl text-swiss-dark mb-1">Address</p>
-                  <p className="text-[#6B5D4F] text-sm md:text-lg leading-relaxed">
+                  <p className="font-serif italic text-sm md:text-xl text-swiss-dark mb-1">Address</p>
+                  <p className="text-[#6B5D4F] text-xs md:text-lg leading-relaxed">
                     {CONTACT_INFO.addressLine1}<br/>
                     {CONTACT_INFO.addressLine2}
                   </p>
@@ -561,7 +567,7 @@ const App: React.FC = () => {
               </div>
 
               {/* Google Maps */}
-              <div className="mt-6 rounded-xl overflow-hidden border border-swiss-dark/10 shadow-lg">
+              <div className="rounded-xl overflow-hidden border border-swiss-dark/10 shadow-lg">
                 <iframe
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2694.5!2d7.7!3d47.4!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDfCsDI0JzAwLjAiTiA3wrA0MicwMC4wIkU!5e0!3m2!1sen!2sch!4v1234567890123!5m2!1sen!2sch"
                   width="100%"
@@ -574,13 +580,13 @@ const App: React.FC = () => {
                 ></iframe>
               </div>
 
-              {/* Contact Us Button - Desktop Only */}
-              <div className="hidden md:block text-right mt-12">
-                <p className="text-sm uppercase tracking-[0.4em] mb-6 text-[#8B7355]">Request a Free Quote</p>
+              {/* Contact Us Button - Mobile Only (at bottom) */}
+              <div className="md:hidden text-center pt-4">
+                <p className="text-[10px] uppercase tracking-[0.3em] mb-4 text-[#8B7355]">Request a Free Quote</p>
                 
                 <a 
                   href={`mailto:${CONTACT_INFO.email}`} 
-                  className="inline-block font-display text-[5vw] leading-none text-swiss-dark hover:text-swiss-gold transition-all duration-300 mb-4 relative overflow-hidden group/btn cursor-pointer active:scale-95"
+                  className="inline-block font-display text-[9vw] leading-none text-swiss-dark hover:text-swiss-gold transition-all duration-300 mb-3 relative overflow-hidden group/btn cursor-pointer active:scale-95"
                   style={{
                     textShadow: '1px 1px 0px rgba(197, 160, 89, 0.3), 2px 2px 0px rgba(197, 160, 89, 0.2), 3px 3px 0px rgba(197, 160, 89, 0.1)',
                     transform: 'translateZ(0)',
@@ -597,7 +603,7 @@ const App: React.FC = () => {
                   <div className="absolute inset-0 -translate-x-full animate-shine bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
                 </a>
                 
-                <p className="text-base font-serif italic text-[#6B5D4F] animate-pulse">
+                <p className="text-xs font-serif italic text-[#6B5D4F] animate-pulse">
                   Click to get your personalized quote today →
                 </p>
               </div>
