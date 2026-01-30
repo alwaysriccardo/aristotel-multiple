@@ -22,19 +22,19 @@ const Navigation: React.FC = () => {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 w-full p-6 md:p-8 flex justify-between items-center z-[60] text-white">
-        <div className={`font-display font-bold text-lg md:text-xl tracking-tighter ${!isMenuOpen ? 'mix-blend-difference' : ''}`}>
+      <nav className="fixed top-0 left-0 w-full p-6 md:p-8 flex justify-between items-center z-[60]">
+        <div className={`font-display font-bold text-lg md:text-xl tracking-tighter ${!isMenuOpen ? 'text-swiss-gold' : 'text-white'}`}>
           ARISTOTEL MULTIPLE
         </div>
         
-        <div className="hidden md:flex gap-10 text-xs uppercase tracking-[0.2em] font-medium mix-blend-difference">
+        <div className="hidden md:flex gap-10 text-xs uppercase tracking-[0.2em] font-medium text-white mix-blend-difference">
           <a href="#projects" className="hover:text-swiss-gold transition-colors">Projects</a>
           <a href="#services" className="hover:text-swiss-gold transition-colors">Services</a>
           <a href="#contact" className="hover:text-swiss-gold transition-colors">Contact</a>
         </div>
         
         <button 
-          className={`md:hidden relative transition-all duration-300 ${!isMenuOpen ? 'mix-blend-difference' : 'text-white'}`}
+          className={`md:hidden relative transition-all duration-300 ${!isMenuOpen ? 'text-swiss-gold' : 'text-white'}`}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
         >
