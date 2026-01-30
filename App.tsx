@@ -118,20 +118,27 @@ const App: React.FC = () => {
         
         {/* HERO SECTION */}
         <section className="hero-container relative h-screen overflow-hidden flex items-center justify-center">
-          <div className="absolute inset-0 w-full h-full bg-black/20 z-10" />
+          <div className="absolute inset-0 w-full h-full bg-black/40 z-10" />
           <img 
             src="https://images.unsplash.com/photo-1600607686527-6fb886090705?q=80&w=2400&auto=format&fit=crop" 
             alt="Luxury Swiss Interior" 
             className="hero-img absolute inset-0 w-full h-full object-cover"
           />
           
-          <div className="relative z-20 text-center text-swiss-cream mix-blend-difference px-4 max-w-6xl mx-auto">
-            <h1 className="font-serif text-[5vw] md:text-[3.5vw] leading-tight tracking-wide italic reveal-text">
+          <div className="relative z-20 text-center text-white px-6 md:px-4 max-w-6xl mx-auto">
+            {/* Semi-transparent background for better readability on mobile */}
+            <div className="md:hidden absolute inset-0 -mx-6 bg-black/30 backdrop-blur-sm"></div>
+            
+            <h1 className="font-serif text-[7vw] sm:text-[6vw] md:text-[3.5vw] leading-[1.3] md:leading-tight tracking-wide italic reveal-text relative py-8 md:py-0" 
+                style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.8)' }}>
               "WE ARE WHAT WE REPEATEDLY DO. EXCELLENCE, THEN, IS NOT AN ACT, BUT A HABIT."
             </h1>
-            <div className="mt-8 flex flex-col items-center reveal-text delay-300">
-              <p className="font-display text-sm md:text-base tracking-[0.3em] uppercase">— ARISTOTLE</p>
-              <div className="h-16 w-px bg-white/50 mt-8 mb-4"></div>
+            <div className="mt-6 md:mt-8 flex flex-col items-center reveal-text delay-300 relative">
+              <p className="font-display text-base md:text-base tracking-[0.3em] uppercase font-bold" 
+                 style={{ textShadow: '1px 1px 4px rgba(0,0,0,0.8)' }}>
+                — ARISTOTLE
+              </p>
+              <div className="h-12 md:h-16 w-px bg-white/70 mt-6 md:mt-8 mb-3 md:mb-4"></div>
               <ArrowDown className="animate-bounce" />
             </div>
           </div>
