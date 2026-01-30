@@ -36,24 +36,24 @@ export const CLEANING_SERVICES = [
 export const FEATURED_PROJECTS: ServiceItem[] = [
   {
     id: "01",
-    title: "Alpine Residence",
-    description: "Complete interior renovation focusing on sustainable insulation and premium hardwood flooring.",
+    title: "3-Bedroom Apartment Renovation",
+    description: "Full interior renovation including new flooring installation, wall insulation upgrade, and complete painting. Completed in 6 weeks with minimal disruption to neighboring units.",
     image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=2574&auto=format&fit=crop",
-    categories: ["Flooring", "Insulation"]
+    categories: ["Flooring", "Insulation", "Painting"]
   },
   {
     id: "02",
-    title: "Zurich Penthouse",
-    description: "Decorative painting techniques and bespoke plastering for a modern brutalist aesthetic.",
+    title: "Office Space Refurbishment",
+    description: "Commercial property makeover: drywall installation, professional painting, and decorative finishes. Project delivered on schedule for client move-in deadline.",
     image: "https://images.unsplash.com/photo-1631679706909-1844bbd07221?q=80&w=2592&auto=format&fit=crop",
-    categories: ["Painting", "Plastering"]
+    categories: ["Painting", "Plastering", "Commercial"]
   },
   {
     id: "03",
-    title: "Lakeside Villa",
-    description: "Deep clean restoration and facade renovation for a historic property on Lake Lucerne.",
+    title: "Historic Building Restoration",
+    description: "Facade renovation and exterior painting for 100-year-old property. Preserved original character while meeting modern building standards.",
     image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2653&auto=format&fit=crop",
-    categories: ["Facade", "Cleaning"]
+    categories: ["Facade", "Painting"]
   }
 ];
 
@@ -64,7 +64,7 @@ export const REVIEWS = [
     location: "Zürich",
     rating: 5,
     date: "2 weeks ago",
-    text: "Absolutely impeccable work. The team transformed our apartment with such precision and care. Every detail was perfect, from the wallpapering to the final deep clean. Highly recommended!"
+    text: "Had them paint our entire apartment and install new flooring. Finished on time and stayed within the quoted price. Clean work, would hire again."
   },
   {
     id: 2,
@@ -72,7 +72,7 @@ export const REVIEWS = [
     location: "Basel",
     rating: 5,
     date: "1 month ago",
-    text: "Professional, punctual, and the quality is outstanding. They renovated our kitchen and the decorative plastering is a work of art. Worth every franc!"
+    text: "Needed move-out cleaning for apartment handover. They were thorough and got our full deposit back. Responsive communication and fair pricing."
   },
   {
     id: 3,
@@ -80,7 +80,7 @@ export const REVIEWS = [
     location: "Luzern",
     rating: 5,
     date: "3 weeks ago",
-    text: "Best cleaning service in Switzerland, hands down. After our renovation, they left everything spotless. The attention to detail is unmatched."
+    text: "Professional team. Did plastering and painting in our office. Minimal disruption to business and quality work. Good value for money."
   },
   {
     id: 4,
@@ -88,36 +88,36 @@ export const REVIEWS = [
     location: "Zug",
     rating: 5,
     date: "2 months ago",
-    text: "Excellent communication throughout the project. The painting and facade work exceeded our expectations. True Swiss quality and craftsmanship."
+    text: "Used them for post-renovation cleanup. Removed all the dust and debris efficiently. Reliable service and reasonable rates."
   }
 ];
 
 export const CLEANING_PROJECTS: ServiceItem[] = [
   {
     id: "01",
-    title: "Post-Renovation Deep Clean",
-    description: "Complete deep cleaning service for a newly renovated 3-bedroom apartment in Zürich. Every surface meticulously cleaned to perfection.",
+    title: "Post-Renovation Cleaning",
+    description: "Removed all construction dust and debris from 120m² apartment after complete renovation. Includes dust removal from all surfaces, floor cleaning, and window washing. Ready for immediate move-in.",
     image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=2574&auto=format&fit=crop",
     categories: ["Deep Cleaning", "Post-Renovation"]
   },
   {
     id: "02",
-    title: "Move-Out Cleaning Excellence",
-    description: "Professional move-out cleaning for a luxury penthouse. Crystal-clear windows and spotless interiors guaranteed deposit return.",
+    title: "Move-Out Cleaning Service",
+    description: "Complete end-of-tenancy cleaning including kitchen appliances, bathroom sanitization, and window cleaning. Meets Swiss rental standards for deposit return.",
     image: "https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?q=80&w=2670&auto=format&fit=crop",
     categories: ["Move-Out", "Window Cleaning"]
   },
   {
     id: "03",
-    title: "Commercial Space Sanitization",
-    description: "Clinical-grade deep cleaning and sanitization for an office space in Basel. Medical-standard cleanliness achieved.",
+    title: "Office Deep Cleaning",
+    description: "Regular deep cleaning service for 200m² office space. Includes floor care, desk sanitization, and common area maintenance. Scheduled during off-hours to avoid business disruption.",
     image: "https://images.unsplash.com/photo-1563453392212-326f5e854473?q=80&w=2670&auto=format&fit=crop",
     categories: ["Deep Cleaning", "Commercial"]
   },
   {
     id: "04",
-    title: "Waste Removal & Restoration",
-    description: "Complete waste removal and deep cleaning service after construction. Space restored to pristine condition.",
+    title: "Construction Cleanup",
+    description: "Removed 2 tons of construction waste and cleaned entire property after major renovation. Includes debris removal, heavy-duty cleaning, and final polish.",
     image: "https://images.unsplash.com/photo-1585421514738-01798e348b17?q=80&w=2670&auto=format&fit=crop",
     categories: ["Waste Removal", "Deep Cleaning"]
   }

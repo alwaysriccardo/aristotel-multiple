@@ -141,23 +141,24 @@ const App: React.FC = () => {
         <section className="py-32 px-6 md:px-20 max-w-[1800px] mx-auto grid md:grid-cols-2 gap-16">
           <div>
             <h2 className="font-display text-4xl md:text-6xl leading-tight reveal-text text-swiss-dark">
-              REDEFINING <br />
-              <span className="text-swiss-gold italic font-serif">Luxury Living</span>
+              YOUR TRUSTED <br />
+              <span className="text-swiss-gold italic font-serif">Renovation Partner</span>
             </h2>
           </div>
           <div className="font-body text-xl font-light leading-relaxed text-swiss-stone space-y-8 reveal-text">
             <p>
-              Based in the heart of Switzerland, Aristotel Multiple transforms spaces into masterpieces. 
-              We blend traditional Swiss craftsmanship with modern brutalist and minimalist aesthetics.
+              Operating across Switzerland, we provide professional renovation and cleaning services 
+              for residential and commercial properties. Our experienced team delivers quality workmanship 
+              on time and within budget.
             </p>
             <p>
-              From intricate decorative plastering to clinical-grade deep cleaning, our attention to detail 
-              is obsessive and uncompromising.
+              From full apartment renovations to post-construction cleaning, we handle projects of all sizes. 
+              Licensed, insured, and committed to getting the job done right.
             </p>
             <div className="flex gap-4 items-center text-swiss-dark font-medium uppercase tracking-widest text-sm pt-8">
               <span>Est. 2024</span>
               <span className="w-2 h-2 rounded-full bg-swiss-gold"></span>
-              <span>Swiss Operated</span>
+              <span>Licensed & Insured</span>
             </div>
           </div>
         </section>
@@ -177,8 +178,8 @@ const App: React.FC = () => {
         {/* PROJECTS STACK */}
         <section id="projects" className="py-24 bg-swiss-dark text-swiss-cream relative px-4 md:px-0">
           <div className="text-center mb-24 reveal-text">
-            <span className="text-xs uppercase tracking-[0.3em] text-swiss-gold">Portfolio</span>
-            <h2 className="font-display text-4xl md:text-6xl mt-4">Selected Works</h2>
+            <span className="text-xs uppercase tracking-[0.3em] text-swiss-gold">Recent Work</span>
+            <h2 className="font-display text-4xl md:text-6xl mt-4">Completed Projects</h2>
           </div>
 
           <div className="max-w-6xl mx-auto pb-20">
@@ -226,7 +227,7 @@ const App: React.FC = () => {
            
            <div className="max-w-7xl mx-auto relative z-10">
              <div className="text-center mb-12 reveal-text">
-               <span className="text-xs uppercase tracking-[0.3em] text-swiss-gold">Our Expertise</span>
+               <span className="text-xs uppercase tracking-[0.3em] text-swiss-gold">What We Do</span>
                <h2 className="font-display text-3xl md:text-4xl mt-4">Renovation Services</h2>
              </div>
 
@@ -260,7 +261,7 @@ const App: React.FC = () => {
              {/* Call to action */}
              <div className="text-center mt-12 reveal-text">
                <p className="font-body text-swiss-stone text-sm max-w-xl mx-auto">
-                 Swiss craftsmanship meets modern precision. Every project executed to perfection.
+                 All work performed by experienced professionals. Free quotes available.
                </p>
              </div>
            </div>
@@ -270,10 +271,10 @@ const App: React.FC = () => {
         <section className="py-32 px-6 md:px-20 bg-swiss-cream text-swiss-dark relative overflow-hidden">
           <div className="max-w-7xl mx-auto">
             <div className="text-center mb-20 reveal-text">
-              <span className="text-xs uppercase tracking-[0.3em] text-swiss-gold">Pristine Excellence</span>
+              <span className="text-xs uppercase tracking-[0.3em] text-swiss-gold">Professional Cleaning</span>
               <h2 className="font-display text-4xl md:text-5xl mt-4">Cleaning Services</h2>
               <p className="font-body text-swiss-stone mt-6 max-w-2xl mx-auto">
-                Clinical-grade deep cleaning that transforms spaces. Our obsessive attention to detail ensures every surface is immaculate.
+                Thorough cleaning services for residential and commercial properties. From routine maintenance to deep post-construction cleanup.
               </p>
             </div>
 
@@ -381,10 +382,10 @@ const App: React.FC = () => {
         </div>
 
         <div className="footer-content relative z-10 text-center px-4">
-          <p className="text-xs md:text-sm uppercase tracking-[0.4em] mb-6 text-swiss-stone">Ready to transform your space?</p>
+          <p className="text-xs md:text-sm uppercase tracking-[0.4em] mb-6 text-swiss-stone">Request a Free Quote</p>
           
           <a href={`mailto:${CONTACT_INFO.email}`} className="block font-display text-[8vw] md:text-[6vw] leading-none hover:text-swiss-gold transition-colors duration-500 shine-effect-text">
-            GET IN TOUCH
+            CONTACT US
           </a>
           
           <div className="mt-16 grid md:grid-cols-3 gap-12 text-center md:text-left max-w-4xl mx-auto border-t border-white/10 pt-12">
