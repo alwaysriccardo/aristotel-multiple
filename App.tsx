@@ -219,42 +219,54 @@ const App: React.FC = () => {
         </section>
 
         {/* RENOVATION SERVICES */}
-        <section id="services" className="py-32 px-6 md:px-20 bg-[#E8E6E1] text-swiss-dark relative overflow-hidden">
+        <section id="services" className="py-20 px-6 md:px-20 bg-[#E8E6E1] text-swiss-dark relative overflow-hidden">
            {/* Decorative Elements */}
            <div className="absolute top-0 right-0 w-96 h-96 bg-swiss-gold/5 rounded-full blur-3xl"></div>
            <div className="absolute bottom-0 left-0 w-96 h-96 bg-swiss-dark/5 rounded-full blur-3xl"></div>
            
            <div className="max-w-7xl mx-auto relative z-10">
-             <div className="text-center mb-20 reveal-text">
+             <div className="text-center mb-12 reveal-text">
                <span className="text-xs uppercase tracking-[0.3em] text-swiss-gold">Our Expertise</span>
-               <h2 className="font-display text-4xl md:text-5xl mt-4">Renovation Services</h2>
-               <p className="font-body text-swiss-stone mt-6 max-w-2xl mx-auto">
-                 Meticulous craftsmanship that transforms spaces. We blend traditional Swiss quality with modern aesthetics.
-               </p>
+               <h2 className="font-display text-3xl md:text-4xl mt-4">Renovation Services</h2>
              </div>
 
-             <div className="max-w-4xl mx-auto">
-               {/* Renovation Services */}
-               <div className="reveal-text bg-white/50 backdrop-blur-sm p-10 md:p-16 rounded-2xl border border-swiss-dark/10 shadow-lg hover:shadow-2xl transition-all duration-500 group">
-                 <div className="flex items-center gap-4 mb-8 justify-center">
-                   <div className="w-20 h-20 bg-swiss-gold/20 rounded-full flex items-center justify-center group-hover:bg-swiss-gold/30 transition-colors">
-                     <span className="text-3xl font-display text-swiss-dark">01</span>
+             <div className="reveal-text grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 max-w-6xl mx-auto">
+               {RENOVATION_SERVICES.map((service, i) => (
+                 <div 
+                   key={i} 
+                   className="group cursor-none bg-white/60 backdrop-blur-sm rounded-xl p-5 border border-swiss-dark/5 hover:border-swiss-gold/50 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col items-center justify-center text-center min-h-[140px] relative overflow-hidden"
+                 >
+                   {/* Animated background */}
+                   <div className="absolute inset-0 bg-gradient-to-br from-swiss-gold/0 to-swiss-gold/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                   
+                   {/* Number badge */}
+                   <div className="absolute top-2 right-2 w-6 h-6 rounded-full bg-swiss-gold/20 flex items-center justify-center group-hover:bg-swiss-gold/40 transition-colors">
+                     <span className="text-[10px] font-display text-swiss-dark font-bold">
+                       {String(i + 1).padStart(2, '0')}
+                     </span>
                    </div>
+                   
+                   {/* Decorative icon placeholder */}
+                   <div className="w-12 h-12 mb-3 rounded-full bg-swiss-gold/20 flex items-center justify-center group-hover:bg-swiss-gold/30 transition-all duration-300 group-hover:scale-110 relative z-10">
+                     <div className="w-6 h-6 border-2 border-swiss-dark/40 rounded-sm group-hover:rotate-45 transition-transform duration-500"></div>
+                   </div>
+                   
+                   {/* Service name */}
+                   <span className="text-sm font-serif italic text-swiss-stone group-hover:text-swiss-dark transition-colors duration-300 leading-tight relative z-10">
+                     {service}
+                   </span>
+                   
+                   {/* Bottom accent line */}
+                   <div className="absolute bottom-0 left-0 h-1 w-0 bg-swiss-gold group-hover:w-full transition-all duration-500"></div>
                  </div>
-                 <div className="h-1 w-32 bg-swiss-gold mb-12 group-hover:w-full transition-all duration-700 mx-auto"></div>
-                 <div className="grid md:grid-cols-2 gap-6">
-                   {RENOVATION_SERVICES.map((service, i) => (
-                     <div key={i} className="group/item cursor-none flex items-start gap-3">
-                       <span className="mt-2 w-3 h-3 rounded-full bg-swiss-gold flex-shrink-0 group-hover/item:scale-150 transition-transform"></span>
-                       <div className="flex-1">
-                         <span className="text-lg md:text-xl font-serif italic text-swiss-stone group-hover/item:text-swiss-dark transition-colors duration-300 block">
-                           {service}
-                         </span>
-                       </div>
-                     </div>
-                   ))}
-                 </div>
-               </div>
+               ))}
+             </div>
+
+             {/* Call to action */}
+             <div className="text-center mt-12 reveal-text">
+               <p className="font-body text-swiss-stone text-sm max-w-xl mx-auto">
+                 Swiss craftsmanship meets modern precision. Every project executed to perfection.
+               </p>
              </div>
            </div>
         </section>
