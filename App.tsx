@@ -2,12 +2,13 @@ import React, { useEffect, useState, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from '@studio-freight/lenis';
-import { ArrowDown, Mail, Phone, MapPin, ArrowRight } from 'lucide-react';
+import { ArrowDown, Mail, Phone, MapPin, ArrowRight, Star, MessageCircle } from 'lucide-react';
 
 import Preloader from './components/Preloader';
 import Navigation from './components/Navigation';
 import CustomCursor from './components/CustomCursor';
-import { CONTACT_INFO, LOCATIONS, RENOVATION_SERVICES, CLEANING_SERVICES, FEATURED_PROJECTS } from './constants';
+import FloatingActions from './components/FloatingActions';
+import { CONTACT_INFO, LOCATIONS, RENOVATION_SERVICES, CLEANING_SERVICES, FEATURED_PROJECTS, REVIEWS } from './constants';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -111,6 +112,7 @@ const App: React.FC = () => {
       <Preloader onComplete={() => setLoading(false)} />
       <CustomCursor />
       <Navigation />
+      <FloatingActions />
 
       <div ref={wrapperRef} className="relative z-10 bg-swiss-cream mb-[100vh] shadow-2xl">
         
@@ -123,13 +125,12 @@ const App: React.FC = () => {
             className="hero-img absolute inset-0 w-full h-full object-cover"
           />
           
-          <div className="relative z-20 text-center text-swiss-cream mix-blend-difference px-4">
-            <h1 className="font-display text-[10vw] md:text-[8vw] leading-[0.85] tracking-tighter">
-              <span className="block reveal-text">SWISS</span>
-              <span className="block reveal-text text-transparent stroke-white" style={{ WebkitTextStroke: '2px white' }}>PRECISION</span>
+          <div className="relative z-20 text-center text-swiss-cream mix-blend-difference px-4 max-w-6xl mx-auto">
+            <h1 className="font-serif text-[5vw] md:text-[3.5vw] leading-tight tracking-wide italic reveal-text">
+              "WE ARE WHAT WE REPEATEDLY DO. EXCELLENCE, THEN, IS NOT AN ACT, BUT A HABIT."
             </h1>
             <div className="mt-8 flex flex-col items-center reveal-text delay-300">
-              <p className="font-serif text-lg md:text-xl italic tracking-wide">Aristotel Multiple</p>
+              <p className="font-display text-sm md:text-base tracking-[0.3em] uppercase">— ARISTOTLE</p>
               <div className="h-16 w-px bg-white/50 mt-8 mb-4"></div>
               <ArrowDown className="animate-bounce" />
             </div>
@@ -199,7 +200,7 @@ const App: React.FC = () => {
                         {project.description}
                       </p>
                     </div>
-                    <button className="flex items-center gap-4 text-swiss-gold uppercase tracking-widest text-xs group-hover:gap-6 transition-all mt-8">
+                    <button className="flex items-center gap-4 text-swiss-gold uppercase tracking-widest text-xs group-hover:gap-6 transition-all mt-8 shine-effect px-4 py-2 border border-swiss-gold/30 rounded-full hover:bg-swiss-gold/10">
                       View Case Study <ArrowRight size={16} />
                     </button>
                   </div>
@@ -218,24 +219,39 @@ const App: React.FC = () => {
         </section>
 
         {/* SERVICES LIST */}
-        <section id="services" className="py-32 px-6 md:px-20 bg-[#E8E6E1] text-swiss-dark">
-           <div className="max-w-7xl mx-auto">
-             <div className="grid md:grid-cols-2 gap-20">
+        <section id="services" className="py-32 px-6 md:px-20 bg-[#E8E6E1] text-swiss-dark relative overflow-hidden">
+           {/* Decorative Elements */}
+           <div className="absolute top-0 right-0 w-96 h-96 bg-swiss-gold/5 rounded-full blur-3xl"></div>
+           <div className="absolute bottom-0 left-0 w-96 h-96 bg-swiss-dark/5 rounded-full blur-3xl"></div>
+           
+           <div className="max-w-7xl mx-auto relative z-10">
+             <div className="text-center mb-20 reveal-text">
+               <span className="text-xs uppercase tracking-[0.3em] text-swiss-gold">Our Expertise</span>
+               <h2 className="font-display text-4xl md:text-5xl mt-4">Services</h2>
+               <p className="font-body text-swiss-stone mt-6 max-w-2xl mx-auto">
+                 From meticulous renovations to pristine cleaning, we deliver excellence in every detail.
+               </p>
+             </div>
+
+             <div className="grid md:grid-cols-2 gap-12">
                
                {/* Renovation Column */}
-               <div className="reveal-text">
-                 <h3 className="font-display text-3xl mb-12 border-b border-swiss-dark/20 pb-4 flex justify-between items-end">
-                   <span>Renovation</span>
-                   <span className="text-sm font-body opacity-50 tracking-wide font-normal">01</span>
-                 </h3>
-                 <ul className="space-y-6">
+               <div className="reveal-text bg-white/50 backdrop-blur-sm p-10 rounded-2xl border border-swiss-dark/10 shadow-lg hover:shadow-2xl transition-all duration-500 group">
+                 <div className="flex items-center gap-4 mb-8">
+                   <div className="w-16 h-16 bg-swiss-gold/20 rounded-full flex items-center justify-center group-hover:bg-swiss-gold/30 transition-colors">
+                     <span className="text-2xl font-display text-swiss-dark">01</span>
+                   </div>
+                   <h3 className="font-display text-3xl">Renovation</h3>
+                 </div>
+                 <div className="h-1 w-20 bg-swiss-gold mb-8 group-hover:w-full transition-all duration-700"></div>
+                 <ul className="space-y-5">
                    {RENOVATION_SERVICES.map((service, i) => (
-                     <li key={i} className="group cursor-none">
-                       <div className="flex items-baseline justify-between overflow-hidden">
-                         <span className="text-xl md:text-2xl font-serif italic text-swiss-stone group-hover:text-swiss-dark group-hover:translate-x-4 transition-all duration-300">
+                     <li key={i} className="group/item cursor-none flex items-start gap-3">
+                       <span className="mt-2 w-2 h-2 rounded-full bg-swiss-gold flex-shrink-0 group-hover/item:scale-150 transition-transform"></span>
+                       <div className="flex-1">
+                         <span className="text-lg md:text-xl font-serif italic text-swiss-stone group-hover/item:text-swiss-dark transition-colors duration-300 block">
                            {service}
                          </span>
-                         <span className="opacity-0 group-hover:opacity-100 transition-opacity text-swiss-gold">✦</span>
                        </div>
                      </li>
                    ))}
@@ -243,19 +259,22 @@ const App: React.FC = () => {
                </div>
 
                {/* Cleaning Column */}
-               <div className="reveal-text delay-100">
-                 <h3 className="font-display text-3xl mb-12 border-b border-swiss-dark/20 pb-4 flex justify-between items-end">
-                   <span>Cleaning</span>
-                   <span className="text-sm font-body opacity-50 tracking-wide font-normal">02</span>
-                 </h3>
-                 <ul className="space-y-6">
+               <div className="reveal-text delay-100 bg-swiss-dark/95 backdrop-blur-sm p-10 rounded-2xl border border-white/10 shadow-lg hover:shadow-2xl transition-all duration-500 group text-swiss-cream">
+                 <div className="flex items-center gap-4 mb-8">
+                   <div className="w-16 h-16 bg-swiss-gold/20 rounded-full flex items-center justify-center group-hover:bg-swiss-gold/30 transition-colors">
+                     <span className="text-2xl font-display text-swiss-cream">02</span>
+                   </div>
+                   <h3 className="font-display text-3xl">Cleaning</h3>
+                 </div>
+                 <div className="h-1 w-20 bg-swiss-gold mb-8 group-hover:w-full transition-all duration-700"></div>
+                 <ul className="space-y-5">
                    {CLEANING_SERVICES.map((service, i) => (
-                     <li key={i} className="group cursor-none">
-                       <div className="flex items-baseline justify-between overflow-hidden">
-                         <span className="text-xl md:text-2xl font-serif italic text-swiss-stone group-hover:text-swiss-dark group-hover:translate-x-4 transition-all duration-300">
+                     <li key={i} className="group/item cursor-none flex items-start gap-3">
+                       <span className="mt-2 w-2 h-2 rounded-full bg-swiss-gold flex-shrink-0 group-hover/item:scale-150 transition-transform"></span>
+                       <div className="flex-1">
+                         <span className="text-lg md:text-xl font-serif italic text-swiss-stone group-hover/item:text-swiss-cream transition-colors duration-300 block">
                            {service}
                          </span>
-                         <span className="opacity-0 group-hover:opacity-100 transition-opacity text-swiss-gold">✦</span>
                        </div>
                      </li>
                    ))}
@@ -264,6 +283,49 @@ const App: React.FC = () => {
 
              </div>
            </div>
+        </section>
+
+        {/* REVIEWS SECTION */}
+        <section className="py-20 bg-swiss-dark text-swiss-cream relative overflow-hidden">
+          <div className="max-w-7xl mx-auto px-6 md:px-20">
+            <div className="flex items-center justify-between mb-12 reveal-text">
+              <div>
+                <h2 className="font-display text-3xl md:text-4xl">Client Reviews</h2>
+                <div className="flex items-center gap-2 mt-3">
+                  <div className="flex">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-5 h-5 fill-swiss-gold text-swiss-gold" />
+                    ))}
+                  </div>
+                  <span className="text-sm text-swiss-stone ml-2">5.0 • {REVIEWS.length} reviews</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {REVIEWS.map((review, index) => (
+                <div 
+                  key={review.id} 
+                  className="reveal-text bg-white/5 backdrop-blur-sm p-6 rounded-xl border border-white/10 hover:border-swiss-gold/50 transition-all duration-300 hover:-translate-y-1"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <div className="flex items-start justify-between mb-3">
+                    <div>
+                      <h4 className="font-serif text-lg font-semibold">{review.name}</h4>
+                      <p className="text-xs text-swiss-stone">{review.location}</p>
+                    </div>
+                    <div className="flex">
+                      {[...Array(review.rating)].map((_, i) => (
+                        <Star key={i} className="w-3 h-3 fill-swiss-gold text-swiss-gold" />
+                      ))}
+                    </div>
+                  </div>
+                  <p className="text-sm text-swiss-stone leading-relaxed mb-3">{review.text}</p>
+                  <p className="text-xs text-swiss-stone/50">{review.date}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </section>
 
       </div>
@@ -279,7 +341,7 @@ const App: React.FC = () => {
         <div className="footer-content relative z-10 text-center px-4">
           <p className="text-xs md:text-sm uppercase tracking-[0.4em] mb-6 text-swiss-stone">Ready to transform your space?</p>
           
-          <a href={`mailto:${CONTACT_INFO.email}`} className="block font-display text-[8vw] md:text-[6vw] leading-none hover:text-swiss-gold transition-colors duration-500">
+          <a href={`mailto:${CONTACT_INFO.email}`} className="block font-display text-[8vw] md:text-[6vw] leading-none hover:text-swiss-gold transition-colors duration-500 shine-effect-text">
             GET IN TOUCH
           </a>
           

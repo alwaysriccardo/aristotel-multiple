@@ -56,3 +56,38 @@ export const FEATURED_PROJECTS: ServiceItem[] = [
     categories: ["Facade", "Cleaning"]
   }
 ];
+
+export const REVIEWS = [
+  {
+    id: 1,
+    name: "Markus Weber",
+    location: "Zürich",
+    rating: 5,
+    date: "2 weeks ago",
+    text: "Absolutely impeccable work. The team transformed our apartment with such precision and care. Every detail was perfect, from the wallpapering to the final deep clean. Highly recommended!"
+  },
+  {
+    id: 2,
+    name: "Sophie Laurent",
+    location: "Basel",
+    rating: 5,
+    date: "1 month ago",
+    text: "Professional, punctual, and the quality is outstanding. They renovated our kitchen and the decorative plastering is a work of art. Worth every franc!"
+  },
+  {
+    id: 3,
+    name: "Thomas Müller",
+    location: "Luzern",
+    rating: 5,
+    date: "3 weeks ago",
+    text: "Best cleaning service in Switzerland, hands down. After our renovation, they left everything spotless. The attention to detail is unmatched."
+  },
+  {
+    id: 4,
+    name: "Elena Rossi",
+    location: "Zug",
+    rating: 5,
+    date: "2 months ago",
+    text: "Excellent communication throughout the project. The painting and facade work exceeded our expectations. True Swiss quality and craftsmanship."
+  }
+];
