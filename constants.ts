@@ -3,7 +3,9 @@ import { ServiceItem, Location } from './types';
 export const CONTACT_INFO = {
   phone: "+41 76 630 87 68",
   email: "aristotelmultiple@mail.ch",
-  address: "Zurich, Switzerland"
+  address: "Sonnenrain 7, 4717 Mümliswil, Switzerland",
+  addressLine1: "Sonnenrain 7",
+  addressLine2: "4717 Mümliswil"
 };
 
 export const LOCATIONS: Location[] = [

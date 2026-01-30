@@ -552,12 +552,26 @@ const App: React.FC = () => {
                   <MapPin className="text-swiss-dark w-4 h-4 md:w-5 md:h-5" />
                 </div>
                 <div className="min-w-0 flex-1">
-                  <p className="font-serif italic text-base md:text-xl text-swiss-dark mb-1">Service Areas</p>
+                  <p className="font-serif italic text-base md:text-xl text-swiss-dark mb-1">Address</p>
                   <p className="text-[#6B5D4F] text-sm md:text-lg leading-relaxed">
-                    Zürich • Aargau • Basel<br/>
-                    Zug • Luzern • Bern
+                    {CONTACT_INFO.addressLine1}<br/>
+                    {CONTACT_INFO.addressLine2}
                   </p>
                 </div>
+              </div>
+
+              {/* Google Maps */}
+              <div className="mt-6 rounded-xl overflow-hidden border border-swiss-dark/10 shadow-lg">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2694.5!2d7.7!3d47.4!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDfCsDI0JzAwLjAiTiA3wrA0MicwMC4wIkU!5e0!3m2!1sen!2sch!4v1234567890123!5m2!1sen!2sch"
+                  width="100%"
+                  height="200"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Aristotel Multiple Location"
+                ></iframe>
               </div>
 
               {/* Contact Us Button - Desktop Only */}
