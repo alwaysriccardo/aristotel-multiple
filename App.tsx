@@ -202,7 +202,7 @@ const App: React.FC = () => {
                       </p>
                     </div>
                     <a 
-                      href="#contact"
+                      href={`mailto:${CONTACT_INFO.email}?subject=Quote Request: ${project.title}`}
                       className="flex items-center gap-4 text-swiss-dark uppercase tracking-widest text-xs group-hover:gap-6 transition-all mt-8 shine-effect px-4 py-2 border border-swiss-dark/30 rounded-full hover:bg-swiss-dark/10"
                     >
                       Get a Free Quote <ArrowRight size={16} />
