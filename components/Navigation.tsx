@@ -23,7 +23,7 @@ const Navigation: React.FC = () => {
   return (
     <>
       <nav className="fixed top-0 left-0 w-full p-6 md:p-8 flex justify-between items-center z-[60]">
-        <div className={`font-display font-bold text-lg md:text-xl tracking-tighter ${!isMenuOpen ? 'text-swiss-gold' : 'text-white'}`}>
+        <div className={`font-display font-bold text-lg md:text-xl tracking-tighter ${!isMenuOpen ? 'text-[#D4C5B0]' : 'text-white'}`}>
           ARISTOTEL MULTIPLE
         </div>
         
@@ -34,7 +34,7 @@ const Navigation: React.FC = () => {
         </div>
         
         <button 
-          className={`md:hidden relative transition-all duration-300 ${!isMenuOpen ? 'text-swiss-gold' : 'text-white'}`}
+          className={`md:hidden relative transition-all duration-300 ${!isMenuOpen ? 'text-[#D4C5B0]' : 'text-white'}`}
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           aria-label="Toggle menu"
         >
