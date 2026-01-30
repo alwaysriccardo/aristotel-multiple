@@ -24,7 +24,7 @@ const Navigation: React.FC = () => {
     <>
       <nav className="fixed top-0 left-0 w-full p-6 md:p-8 flex justify-between items-center z-[60] text-white">
         <div className={`font-display font-bold text-lg md:text-xl tracking-tighter ${!isMenuOpen ? 'mix-blend-difference' : ''}`}>
-          ARISTOTEL
+          ARISTOTEL MULTIPLE
         </div>
         
         <div className="hidden md:flex gap-10 text-xs uppercase tracking-[0.2em] font-medium mix-blend-difference">
