@@ -74,7 +74,7 @@ export const REVIEWS = [
     location: "Basel",
     rating: 5,
     date: "1 month ago",
-    text: "Needed move-out cleaning for apartment handover. They were thorough and got our full deposit back. Responsive communication and fair pricing."
+    text: "Needed move-out cleaning for apartment handover. Patricia and her team were thorough and got our full deposit back. Responsive communication and fair pricing."
   },
   {
     id: 3,
