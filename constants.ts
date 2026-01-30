@@ -91,3 +91,34 @@ export const REVIEWS = [
     text: "Excellent communication throughout the project. The painting and facade work exceeded our expectations. True Swiss quality and craftsmanship."
   }
 ];
+
+export const CLEANING_PROJECTS: ServiceItem[] = [
+  {
+    id: "01",
+    title: "Post-Renovation Deep Clean",
+    description: "Complete deep cleaning service for a newly renovated 3-bedroom apartment in Zürich. Every surface meticulously cleaned to perfection.",
+    image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=2574&auto=format&fit=crop",
+    categories: ["Deep Cleaning", "Post-Renovation"]
+  },
+  {
+    id: "02",
+    title: "Move-Out Cleaning Excellence",
+    description: "Professional move-out cleaning for a luxury penthouse. Crystal-clear windows and spotless interiors guaranteed deposit return.",
+    image: "https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?q=80&w=2670&auto=format&fit=crop",
+    categories: ["Move-Out", "Window Cleaning"]
+  },
+  {
+    id: "03",
+    title: "Commercial Space Sanitization",
+    description: "Clinical-grade deep cleaning and sanitization for an office space in Basel. Medical-standard cleanliness achieved.",
+    image: "https://images.unsplash.com/photo-1563453392212-326f5e854473?q=80&w=2670&auto=format&fit=crop",
+    categories: ["Deep Cleaning", "Commercial"]
+  },
+  {
+    id: "04",
+    title: "Waste Removal & Restoration",
+    description: "Complete waste removal and deep cleaning service after construction. Space restored to pristine condition.",
+    image: "https://images.unsplash.com/photo-1585421514738-01798e348b17?q=80&w=2670&auto=format&fit=crop",
+    categories: ["Waste Removal", "Deep Cleaning"]
+  }
+];

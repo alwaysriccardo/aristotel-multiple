@@ -8,7 +8,7 @@ import Preloader from './components/Preloader';
 import Navigation from './components/Navigation';
 import CustomCursor from './components/CustomCursor';
 import FloatingActions from './components/FloatingActions';
-import { CONTACT_INFO, LOCATIONS, RENOVATION_SERVICES, CLEANING_SERVICES, FEATURED_PROJECTS, REVIEWS } from './constants';
+import { CONTACT_INFO, LOCATIONS, RENOVATION_SERVICES, CLEANING_SERVICES, FEATURED_PROJECTS, CLEANING_PROJECTS, REVIEWS } from './constants';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -218,7 +218,7 @@ const App: React.FC = () => {
           </div>
         </section>
 
-        {/* SERVICES LIST */}
+        {/* RENOVATION SERVICES */}
         <section id="services" className="py-32 px-6 md:px-20 bg-[#E8E6E1] text-swiss-dark relative overflow-hidden">
            {/* Decorative Elements */}
            <div className="absolute top-0 right-0 w-96 h-96 bg-swiss-gold/5 rounded-full blur-3xl"></div>
@@ -227,62 +227,97 @@ const App: React.FC = () => {
            <div className="max-w-7xl mx-auto relative z-10">
              <div className="text-center mb-20 reveal-text">
                <span className="text-xs uppercase tracking-[0.3em] text-swiss-gold">Our Expertise</span>
-               <h2 className="font-display text-4xl md:text-5xl mt-4">Services</h2>
+               <h2 className="font-display text-4xl md:text-5xl mt-4">Renovation Services</h2>
                <p className="font-body text-swiss-stone mt-6 max-w-2xl mx-auto">
-                 From meticulous renovations to pristine cleaning, we deliver excellence in every detail.
+                 Meticulous craftsmanship that transforms spaces. We blend traditional Swiss quality with modern aesthetics.
                </p>
              </div>
 
-             <div className="grid md:grid-cols-2 gap-12">
-               
-               {/* Renovation Column */}
-               <div className="reveal-text bg-white/50 backdrop-blur-sm p-10 rounded-2xl border border-swiss-dark/10 shadow-lg hover:shadow-2xl transition-all duration-500 group">
-                 <div className="flex items-center gap-4 mb-8">
-                   <div className="w-16 h-16 bg-swiss-gold/20 rounded-full flex items-center justify-center group-hover:bg-swiss-gold/30 transition-colors">
-                     <span className="text-2xl font-display text-swiss-dark">01</span>
+             <div className="max-w-4xl mx-auto">
+               {/* Renovation Services */}
+               <div className="reveal-text bg-white/50 backdrop-blur-sm p-10 md:p-16 rounded-2xl border border-swiss-dark/10 shadow-lg hover:shadow-2xl transition-all duration-500 group">
+                 <div className="flex items-center gap-4 mb-8 justify-center">
+                   <div className="w-20 h-20 bg-swiss-gold/20 rounded-full flex items-center justify-center group-hover:bg-swiss-gold/30 transition-colors">
+                     <span className="text-3xl font-display text-swiss-dark">01</span>
                    </div>
-                   <h3 className="font-display text-3xl">Renovation</h3>
                  </div>
-                 <div className="h-1 w-20 bg-swiss-gold mb-8 group-hover:w-full transition-all duration-700"></div>
-                 <ul className="space-y-5">
+                 <div className="h-1 w-32 bg-swiss-gold mb-12 group-hover:w-full transition-all duration-700 mx-auto"></div>
+                 <div className="grid md:grid-cols-2 gap-6">
                    {RENOVATION_SERVICES.map((service, i) => (
-                     <li key={i} className="group/item cursor-none flex items-start gap-3">
-                       <span className="mt-2 w-2 h-2 rounded-full bg-swiss-gold flex-shrink-0 group-hover/item:scale-150 transition-transform"></span>
+                     <div key={i} className="group/item cursor-none flex items-start gap-3">
+                       <span className="mt-2 w-3 h-3 rounded-full bg-swiss-gold flex-shrink-0 group-hover/item:scale-150 transition-transform"></span>
                        <div className="flex-1">
                          <span className="text-lg md:text-xl font-serif italic text-swiss-stone group-hover/item:text-swiss-dark transition-colors duration-300 block">
                            {service}
                          </span>
                        </div>
-                     </li>
+                     </div>
                    ))}
-                 </ul>
-               </div>
-
-               {/* Cleaning Column */}
-               <div className="reveal-text delay-100 bg-swiss-dark/95 backdrop-blur-sm p-10 rounded-2xl border border-white/10 shadow-lg hover:shadow-2xl transition-all duration-500 group text-swiss-cream">
-                 <div className="flex items-center gap-4 mb-8">
-                   <div className="w-16 h-16 bg-swiss-gold/20 rounded-full flex items-center justify-center group-hover:bg-swiss-gold/30 transition-colors">
-                     <span className="text-2xl font-display text-swiss-cream">02</span>
-                   </div>
-                   <h3 className="font-display text-3xl">Cleaning</h3>
                  </div>
-                 <div className="h-1 w-20 bg-swiss-gold mb-8 group-hover:w-full transition-all duration-700"></div>
-                 <ul className="space-y-5">
-                   {CLEANING_SERVICES.map((service, i) => (
-                     <li key={i} className="group/item cursor-none flex items-start gap-3">
-                       <span className="mt-2 w-2 h-2 rounded-full bg-swiss-gold flex-shrink-0 group-hover/item:scale-150 transition-transform"></span>
-                       <div className="flex-1">
-                         <span className="text-lg md:text-xl font-serif italic text-swiss-stone group-hover/item:text-swiss-cream transition-colors duration-300 block">
-                           {service}
-                         </span>
-                       </div>
-                     </li>
-                   ))}
-                 </ul>
                </div>
-
              </div>
            </div>
+        </section>
+
+        {/* CLEANING SERVICES SHOWCASE */}
+        <section className="py-32 px-6 md:px-20 bg-swiss-cream text-swiss-dark relative overflow-hidden">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-20 reveal-text">
+              <span className="text-xs uppercase tracking-[0.3em] text-swiss-gold">Pristine Excellence</span>
+              <h2 className="font-display text-4xl md:text-5xl mt-4">Cleaning Services</h2>
+              <p className="font-body text-swiss-stone mt-6 max-w-2xl mx-auto">
+                Clinical-grade deep cleaning that transforms spaces. Our obsessive attention to detail ensures every surface is immaculate.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              {CLEANING_PROJECTS.map((project, index) => (
+                <div 
+                  key={project.id}
+                  className="reveal-text group cursor-none bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+                >
+                  <div className="relative h-64 md:h-80 overflow-hidden">
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div className="absolute top-4 right-4 bg-swiss-gold text-swiss-dark font-display text-sm px-4 py-2 rounded-full">
+                      {project.id}
+                    </div>
+                  </div>
+                  
+                  <div className="p-8">
+                    <h3 className="font-serif text-2xl md:text-3xl italic mb-3">{project.title}</h3>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.categories.map(cat => (
+                        <span key={cat} className="text-[10px] uppercase tracking-wider border border-swiss-dark/20 px-3 py-1 rounded-full text-swiss-stone">
+                          {cat}
+                        </span>
+                      ))}
+                    </div>
+                    <p className="text-swiss-stone leading-relaxed">{project.description}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Cleaning Services List */}
+            <div className="mt-20 bg-gradient-to-br from-swiss-dark to-black text-swiss-cream rounded-3xl p-12 md:p-16 reveal-text">
+              <h3 className="font-display text-3xl md:text-4xl mb-8 text-center">What We Clean</h3>
+              <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+                {CLEANING_SERVICES.map((service, i) => (
+                  <div key={i} className="flex items-center gap-4 group cursor-none">
+                    <div className="w-3 h-3 rounded-full bg-swiss-gold group-hover:scale-150 transition-transform"></div>
+                    <span className="text-lg md:text-xl font-serif italic text-swiss-stone group-hover:text-swiss-cream transition-colors">
+                      {service}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* REVIEWS SECTION */}
