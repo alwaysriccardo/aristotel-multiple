@@ -165,7 +165,7 @@ const App: React.FC = () => {
           />
           
           <div className="relative z-20 text-center text-swiss-cream mix-blend-difference px-4 max-w-6xl mx-auto">
-            <h1 className="font-serif text-[5vw] md:text-[3.5vw] leading-tight tracking-wide italic reveal-text">
+            <h1 className="font-serif text-[7vw] md:text-[3.5vw] leading-tight tracking-wide italic reveal-text">
               "WE ARE WHAT WE REPEATEDLY DO. EXCELLENCE, THEN, IS NOT AN ACT, BUT A HABIT."
             </h1>
             <div className="mt-8 flex flex-col items-center reveal-text delay-300">
