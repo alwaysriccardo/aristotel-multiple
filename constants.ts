@@ -74,7 +74,7 @@ export const REVIEWS = [
     location: "Basel",
     rating: 5,
     date: "1 month ago",
-    text: "Needed move-out cleaning for apartment handover. Patricia and her team were thorough and got our full deposit back. Responsive communication and fair pricing."
+    text: "Patricia is absolutely wonderful to work with! She helped us with our move-out cleaning and made the whole process so stress-free. Super friendly, answered all our questions, and the place looked spotless. Got our deposit back without any issues. Highly recommend!"
   },
   {
     id: 3,
