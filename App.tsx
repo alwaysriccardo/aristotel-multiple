@@ -185,25 +185,28 @@ const App: React.FC = () => {
           <div className="max-w-6xl mx-auto pb-20">
             {FEATURED_PROJECTS.map((project, index) => (
               <div key={project.id} className="card-item sticky top-24 md:top-32 h-[70vh] w-full flex items-center justify-center mb-12">
-                <div className="card-inner w-full md:w-[90%] h-full bg-[#1F1F1F] border border-white/10 grid md:grid-cols-2 overflow-hidden shadow-2xl relative group">
-                  <div className="p-8 md:p-12 flex flex-col justify-between z-10 bg-[#1F1F1F]">
+                <div className="card-inner w-full md:w-[90%] h-full bg-[#D4C5B0] border border-[#C4B5A0]/30 grid md:grid-cols-2 overflow-hidden shadow-2xl relative group">
+                  <div className="p-8 md:p-12 flex flex-col justify-between z-10 bg-[#D4C5B0]">
                     <div>
-                      <span className="font-display text-6xl md:text-8xl opacity-10 absolute top-4 left-6 text-swiss-cream">{project.id}</span>
-                      <h3 className="font-serif text-3xl md:text-4xl italic mt-12 mb-2 text-white">{project.title}</h3>
+                      <span className="font-display text-6xl md:text-8xl opacity-10 absolute top-4 left-6 text-[#8B7355]">{project.id}</span>
+                      <h3 className="font-serif text-3xl md:text-4xl italic mt-12 mb-2 text-swiss-dark">{project.title}</h3>
                       <div className="flex flex-wrap gap-2 mb-6">
                         {project.categories.map(cat => (
-                          <span key={cat} className="text-[10px] uppercase tracking-wider border border-white/20 px-2 py-1 rounded-full text-white/60">
+                          <span key={cat} className="text-[10px] uppercase tracking-wider border border-swiss-dark/20 px-2 py-1 rounded-full text-swiss-dark/60">
                             {cat}
                           </span>
                         ))}
                       </div>
-                      <p className="text-swiss-stone font-light leading-relaxed">
+                      <p className="text-[#6B5D4F] font-light leading-relaxed">
                         {project.description}
                       </p>
                     </div>
-                    <button className="flex items-center gap-4 text-swiss-gold uppercase tracking-widest text-xs group-hover:gap-6 transition-all mt-8 shine-effect px-4 py-2 border border-swiss-gold/30 rounded-full hover:bg-swiss-gold/10">
-                      View Case Study <ArrowRight size={16} />
-                    </button>
+                    <a 
+                      href="#contact"
+                      className="flex items-center gap-4 text-swiss-dark uppercase tracking-widest text-xs group-hover:gap-6 transition-all mt-8 shine-effect px-4 py-2 border border-swiss-dark/30 rounded-full hover:bg-swiss-dark/10"
+                    >
+                      Get a Free Quote <ArrowRight size={16} />
+                    </a>
                   </div>
                   <div className="h-full w-full overflow-hidden relative">
                     <img 
@@ -211,7 +214,7 @@ const App: React.FC = () => {
                       alt={project.title} 
                       className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500"></div>
+                    <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500"></div>
                   </div>
                 </div>
               </div>
@@ -260,9 +263,16 @@ const App: React.FC = () => {
 
              {/* Call to action */}
              <div className="text-center mt-12 reveal-text">
-               <p className="font-body text-swiss-stone text-sm max-w-xl mx-auto">
+               <p className="font-body text-swiss-stone text-sm max-w-xl mx-auto mb-8">
                  All work performed by experienced professionals. Free quotes available.
                </p>
+               <a
+                 href={`mailto:${CONTACT_INFO.email}?subject=Renovation Quote Request`}
+                 className="inline-flex items-center gap-3 bg-swiss-gold hover:bg-[#b89448] text-white font-display text-sm uppercase tracking-wider px-8 py-4 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 shine-effect group"
+               >
+                 Get a Quote
+                 <Mail className="w-4 h-4 group-hover:rotate-12 transition-transform" />
+               </a>
              </div>
            </div>
         </section>
@@ -374,41 +384,50 @@ const App: React.FC = () => {
       </div>
 
       {/* STICKY FOOTER */}
-      <footer id="contact" className="footer-sticky fixed bottom-0 left-0 w-full h-screen z-0 bg-swiss-dark text-swiss-cream flex flex-col justify-center items-center overflow-hidden">
+      <footer id="contact" className="footer-sticky fixed bottom-0 left-0 w-full h-screen z-0 bg-[#E8DCC8] text-swiss-dark flex flex-col justify-center items-center overflow-hidden">
         
-        {/* Background Texture */}
-        <div className="absolute inset-0 opacity-10 pointer-events-none" 
-             style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='1'/%3E%3C/svg%3E")` }}>
+        {/* Background Image */}
+        <div className="absolute inset-0 w-full h-full">
+          <img 
+            src="https://images.unsplash.com/photo-1615529182904-14819c35db37?q=80&w=2400&auto=format&fit=crop" 
+            alt="Background" 
+            className="w-full h-full object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#E8DCC8]/95 to-[#D4C5B0]/95"></div>
         </div>
 
-        <div className="footer-content relative z-10 text-center px-4">
-          <p className="text-xs md:text-sm uppercase tracking-[0.4em] mb-6 text-swiss-stone">Request a Free Quote</p>
+        <div className="footer-content relative z-10 text-center px-4 w-full max-w-4xl mx-auto">
+          <p className="text-xs md:text-sm uppercase tracking-[0.4em] mb-6 md:mb-8 text-[#8B7355]">Request a Free Quote</p>
           
-          <a href={`mailto:${CONTACT_INFO.email}`} className="block font-display text-[8vw] md:text-[6vw] leading-none hover:text-swiss-gold transition-colors duration-500 shine-effect-text">
-            CONTACT US
+          <a 
+            href={`mailto:${CONTACT_INFO.email}`} 
+            className="inline-block font-display text-[12vw] sm:text-[10vw] md:text-[6vw] leading-none text-swiss-dark hover:text-swiss-gold transition-all duration-500 shine-effect-text mb-4 md:mb-0 relative group"
+          >
+            <span className="inline-block group-hover:scale-105 transition-transform duration-300">CONTACT US</span>
+            <div className="absolute -inset-4 bg-swiss-gold/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
           </a>
           
-          <div className="mt-16 grid md:grid-cols-3 gap-12 text-center md:text-left max-w-4xl mx-auto border-t border-white/10 pt-12">
-            <div className="flex flex-col items-center md:items-start gap-4">
+          <div className="mt-12 md:mt-16 grid md:grid-cols-3 gap-8 md:gap-12 text-center md:text-left max-w-4xl mx-auto border-t border-swiss-dark/10 pt-8 md:pt-12">
+            <div className="flex flex-col items-center md:items-start gap-3">
               <Phone className="text-swiss-gold mb-2" />
-              <p className="font-serif italic text-xl">Phone</p>
-              <a href={`tel:${CONTACT_INFO.phone}`} className="text-swiss-stone hover:text-white transition-colors">{CONTACT_INFO.phone}</a>
+              <p className="font-serif italic text-lg md:text-xl text-swiss-dark">Phone</p>
+              <a href={`tel:${CONTACT_INFO.phone}`} className="text-[#6B5D4F] hover:text-swiss-dark transition-colors">{CONTACT_INFO.phone}</a>
             </div>
             
-            <div className="flex flex-col items-center md:items-start gap-4">
+            <div className="flex flex-col items-center md:items-start gap-3">
               <Mail className="text-swiss-gold mb-2" />
-              <p className="font-serif italic text-xl">Email</p>
-              <a href={`mailto:${CONTACT_INFO.email}`} className="text-swiss-stone hover:text-white transition-colors">{CONTACT_INFO.email}</a>
+              <p className="font-serif italic text-lg md:text-xl text-swiss-dark">Email</p>
+              <a href={`mailto:${CONTACT_INFO.email}`} className="text-[#6B5D4F] hover:text-swiss-dark transition-colors">{CONTACT_INFO.email}</a>
             </div>
             
-            <div className="flex flex-col items-center md:items-start gap-4">
+            <div className="flex flex-col items-center md:items-start gap-3">
               <MapPin className="text-swiss-gold mb-2" />
-              <p className="font-serif italic text-xl">Region</p>
-              <p className="text-swiss-stone">Schweiz / Zürich / Aargau / Basel<br/>Zug / Luzern / Bern</p>
+              <p className="font-serif italic text-lg md:text-xl text-swiss-dark">Region</p>
+              <p className="text-[#6B5D4F]">Schweiz / Zürich / Aargau / Basel<br/>Zug / Luzern / Bern</p>
             </div>
           </div>
 
-          <div className="mt-20 text-[10px] uppercase tracking-widest text-swiss-stone/50">
+          <div className="mt-12 md:mt-20 text-[10px] uppercase tracking-widest text-[#8B7355]/50">
             © {new Date().getFullYear()} Aristotel Multiple. All Rights Reserved.
           </div>
         </div>
