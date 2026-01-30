@@ -444,15 +444,15 @@ const App: React.FC = () => {
           
           <div className="grid md:grid-cols-2 gap-6 md:gap-12 items-end">
             
-            {/* Left Column: Contact Button + Form (desktop: button above form) */}
-            <div className="space-y-6">
-              {/* Contact Us Button - Desktop */}
-              <div className="hidden md:block text-center">
-                <p className="text-sm uppercase tracking-[0.4em] mb-6 text-[#8B7355]">Request a Free Quote</p>
+            {/* Left Column: Contact Button + Form */}
+            <div className="space-y-4 md:space-y-6">
+              {/* Contact Us Button - Mobile shows above form, Desktop shows above form */}
+              <div className="text-center">
+                <p className="text-[8px] md:text-sm uppercase tracking-[0.2em] md:tracking-[0.4em] mb-2 md:mb-6 text-[#8B7355]">Request a Free Quote</p>
                 
                 <a 
                   href={`mailto:${CONTACT_INFO.email}`} 
-                  className="inline-block font-display text-[5vw] leading-none text-swiss-dark hover:text-swiss-gold transition-all duration-300 mb-4 relative overflow-hidden group/btn cursor-pointer active:scale-95"
+                  className="inline-block font-display text-[7vw] md:text-[5vw] leading-none text-swiss-dark hover:text-swiss-gold transition-all duration-300 mb-2 md:mb-4 relative overflow-hidden group/btn cursor-pointer active:scale-95"
                   style={{
                     textShadow: '1px 1px 0px rgba(197, 160, 89, 0.3), 2px 2px 0px rgba(197, 160, 89, 0.2), 3px 3px 0px rgba(197, 160, 89, 0.1)',
                     transform: 'translateZ(0)',
@@ -469,20 +469,20 @@ const App: React.FC = () => {
                   <div className="absolute inset-0 -translate-x-full animate-shine bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
                 </a>
                 
-                <p className="text-base font-serif italic text-[#6B5D4F] animate-pulse">
+                <p className="text-[10px] md:text-base font-serif italic text-[#6B5D4F] animate-pulse">
                   Click to get your personalized quote today →
                 </p>
               </div>
 
-              {/* Contact Form */}
-              <div className="bg-white/60 backdrop-blur-sm p-4 md:p-8 rounded-xl md:rounded-2xl border border-swiss-dark/10 shadow-lg">
-                <h3 className="font-display text-lg md:text-2xl text-swiss-dark mb-4 md:mb-6">Quick Contact</h3>
-                <form className="space-y-3 md:space-y-4">
+              {/* Contact Form - More compact on mobile */}
+              <div className="bg-white/60 backdrop-blur-sm p-3 md:p-8 rounded-lg md:rounded-2xl border border-swiss-dark/10 shadow-lg">
+                <h3 className="font-display text-sm md:text-2xl text-swiss-dark mb-2 md:mb-6">Quick Contact</h3>
+                <form className="space-y-2 md:space-y-4">
                   <div>
                     <input
                       type="text"
                       placeholder="Your Name"
-                      className="w-full px-3 py-2 md:px-4 md:py-3 text-sm md:text-base bg-white/80 border border-swiss-dark/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-swiss-gold focus:border-transparent transition-all text-swiss-dark placeholder:text-[#8B7355]"
+                      className="w-full px-2.5 py-1.5 md:px-4 md:py-3 text-xs md:text-base bg-white/80 border border-swiss-dark/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-swiss-gold focus:border-transparent transition-all text-swiss-dark placeholder:text-[#8B7355]"
                       required
                     />
                   </div>
@@ -490,7 +490,7 @@ const App: React.FC = () => {
                     <input
                       type="email"
                       placeholder="Your Email"
-                      className="w-full px-3 py-2 md:px-4 md:py-3 text-sm md:text-base bg-white/80 border border-swiss-dark/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-swiss-gold focus:border-transparent transition-all text-swiss-dark placeholder:text-[#8B7355]"
+                      className="w-full px-2.5 py-1.5 md:px-4 md:py-3 text-xs md:text-base bg-white/80 border border-swiss-dark/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-swiss-gold focus:border-transparent transition-all text-swiss-dark placeholder:text-[#8B7355]"
                       required
                     />
                   </div>
@@ -498,20 +498,20 @@ const App: React.FC = () => {
                     <input
                       type="tel"
                       placeholder="Phone Number"
-                      className="w-full px-3 py-2 md:px-4 md:py-3 text-sm md:text-base bg-white/80 border border-swiss-dark/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-swiss-gold focus:border-transparent transition-all text-swiss-dark placeholder:text-[#8B7355]"
+                      className="w-full px-2.5 py-1.5 md:px-4 md:py-3 text-xs md:text-base bg-white/80 border border-swiss-dark/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-swiss-gold focus:border-transparent transition-all text-swiss-dark placeholder:text-[#8B7355]"
                     />
                   </div>
                   <div>
                     <textarea
                       placeholder="Tell us about your project..."
-                      rows={3}
-                      className="w-full px-3 py-2 md:px-4 md:py-3 text-sm md:text-base bg-white/80 border border-swiss-dark/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-swiss-gold focus:border-transparent transition-all text-swiss-dark placeholder:text-[#8B7355] resize-none"
+                      rows={2}
+                      className="w-full px-2.5 py-1.5 md:px-4 md:py-3 text-xs md:text-base bg-white/80 border border-swiss-dark/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-swiss-gold focus:border-transparent transition-all text-swiss-dark placeholder:text-[#8B7355] resize-none md:rows-3"
                       required
                     ></textarea>
                   </div>
                   <button
                     type="submit"
-                    className="w-full bg-swiss-gold hover:bg-[#b89448] text-white font-display text-xs md:text-sm uppercase tracking-wider py-2.5 md:py-3 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 shine-effect"
+                    className="w-full bg-swiss-gold hover:bg-[#b89448] text-white font-display text-[10px] md:text-sm uppercase tracking-wider py-2 md:py-3 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 shine-effect"
                   >
                     Send Message
                   </button>
@@ -578,33 +578,6 @@ const App: React.FC = () => {
                 ></iframe>
               </div>
 
-              {/* Contact Us Button - Mobile Only (at bottom) */}
-              <div className="md:hidden text-center pt-2">
-                <p className="text-[8px] uppercase tracking-[0.2em] mb-2 text-[#8B7355]">Request a Free Quote</p>
-                
-                <a 
-                  href={`mailto:${CONTACT_INFO.email}`} 
-                  className="inline-block font-display text-[7vw] leading-none text-swiss-dark hover:text-swiss-gold transition-all duration-300 mb-2 relative overflow-hidden group/btn cursor-pointer active:scale-95"
-                  style={{
-                    textShadow: '1px 1px 0px rgba(197, 160, 89, 0.3), 2px 2px 0px rgba(197, 160, 89, 0.2), 3px 3px 0px rgba(197, 160, 89, 0.1)',
-                    transform: 'translateZ(0)',
-                  }}
-                >
-                  <span 
-                    className="inline-block relative z-10 transition-transform duration-300 group-hover/btn:translate-y-[-4px]"
-                    style={{
-                      filter: 'drop-shadow(0 5px 10px rgba(0,0,0,0.15))',
-                    }}
-                  >
-                    CONTACT US
-                  </span>
-                  <div className="absolute inset-0 -translate-x-full animate-shine bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
-                </a>
-                
-                <p className="text-[10px] font-serif italic text-[#6B5D4F] animate-pulse">
-                  Click to get your personalized quote today →
-                </p>
-              </div>
             </div>
 
           </div>
