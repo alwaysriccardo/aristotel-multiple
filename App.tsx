@@ -400,15 +400,15 @@ const App: React.FC = () => {
           
           <div className="grid md:grid-cols-2 gap-6 md:gap-12 items-start">
             
-            {/* Left Column: Contact Button + Form */}
-            <div className="space-y-6 md:space-y-8">
-              {/* Contact Us Button */}
-              <div className="text-center md:text-left">
-                <p className="text-[10px] md:text-sm uppercase tracking-[0.3em] md:tracking-[0.4em] mb-4 md:mb-6 text-[#8B7355]">Request a Free Quote</p>
+            {/* Left Column: Contact Button (mobile only) + Form */}
+            <div className="space-y-6 md:space-y-0">
+              {/* Contact Us Button - Mobile Only */}
+              <div className="text-center md:hidden">
+                <p className="text-[10px] uppercase tracking-[0.3em] mb-4 text-[#8B7355]">Request a Free Quote</p>
                 
                 <a 
                   href={`mailto:${CONTACT_INFO.email}`} 
-                  className="inline-block font-display text-[9vw] sm:text-[8vw] md:text-[5vw] leading-none text-swiss-dark hover:text-swiss-gold transition-all duration-300 mb-3 md:mb-4 relative overflow-hidden group/btn cursor-pointer active:scale-95"
+                  className="inline-block font-display text-[9vw] sm:text-[8vw] leading-none text-swiss-dark hover:text-swiss-gold transition-all duration-300 mb-3 relative overflow-hidden group/btn cursor-pointer active:scale-95"
                   style={{
                     textShadow: '1px 1px 0px rgba(197, 160, 89, 0.3), 2px 2px 0px rgba(197, 160, 89, 0.2), 3px 3px 0px rgba(197, 160, 89, 0.1)',
                     transform: 'translateZ(0)',
@@ -425,7 +425,7 @@ const App: React.FC = () => {
                   <div className="absolute inset-0 -translate-x-full animate-shine bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
                 </a>
                 
-                <p className="text-xs md:text-base font-serif italic text-[#6B5D4F] animate-pulse">
+                <p className="text-xs font-serif italic text-[#6B5D4F] animate-pulse">
                   Click to get your personalized quote today →
                 </p>
               </div>
@@ -475,8 +475,8 @@ const App: React.FC = () => {
               </div>
             </div>
 
-            {/* Right Column: Contact Information */}
-            <div className="space-y-5 md:space-y-8 md:pt-16">
+            {/* Right Column: Contact Information + Contact Button (desktop) */}
+            <div className="space-y-5 md:space-y-8">
               <div className="flex items-start gap-3 md:gap-4 group">
                 <a 
                   href={`tel:${CONTACT_INFO.phone}`}
@@ -514,6 +514,34 @@ const App: React.FC = () => {
                     Zug • Luzern • Bern
                   </p>
                 </div>
+              </div>
+
+              {/* Contact Us Button - Desktop Only */}
+              <div className="hidden md:block text-right mt-12">
+                <p className="text-sm uppercase tracking-[0.4em] mb-6 text-[#8B7355]">Request a Free Quote</p>
+                
+                <a 
+                  href={`mailto:${CONTACT_INFO.email}`} 
+                  className="inline-block font-display text-[5vw] leading-none text-swiss-dark hover:text-swiss-gold transition-all duration-300 mb-4 relative overflow-hidden group/btn cursor-pointer active:scale-95"
+                  style={{
+                    textShadow: '1px 1px 0px rgba(197, 160, 89, 0.3), 2px 2px 0px rgba(197, 160, 89, 0.2), 3px 3px 0px rgba(197, 160, 89, 0.1)',
+                    transform: 'translateZ(0)',
+                  }}
+                >
+                  <span 
+                    className="inline-block relative z-10 transition-transform duration-300 group-hover/btn:translate-y-[-4px]"
+                    style={{
+                      filter: 'drop-shadow(0 5px 10px rgba(0,0,0,0.15))',
+                    }}
+                  >
+                    CONTACT US
+                  </span>
+                  <div className="absolute inset-0 -translate-x-full animate-shine bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
+                </a>
+                
+                <p className="text-base font-serif italic text-[#6B5D4F] animate-pulse">
+                  Click to get your personalized quote today →
+                </p>
               </div>
             </div>
 
