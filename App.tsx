@@ -339,7 +339,7 @@ const App: React.FC = () => {
                       <Star key={i} className="w-5 h-5 fill-swiss-gold text-swiss-gold" />
                     ))}
                   </div>
-                  <span className="text-sm text-swiss-stone ml-2">5.0 • {REVIEWS.length} reviews</span>
+                  <span className="text-sm text-swiss-stone ml-2">4.9 • 44+ 5-star reviews</span>
                 </div>
               </div>
             </div>
