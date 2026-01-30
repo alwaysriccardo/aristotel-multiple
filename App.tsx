@@ -401,10 +401,10 @@ const App: React.FC = () => {
           
           <a 
             href={`mailto:${CONTACT_INFO.email}`} 
-            className="inline-block font-display text-[12vw] sm:text-[10vw] md:text-[6vw] leading-none text-swiss-dark hover:text-swiss-gold transition-all duration-500 shine-effect-text mb-4 md:mb-0 relative group"
+            className="inline-block font-display text-[12vw] sm:text-[10vw] md:text-[6vw] leading-none text-swiss-dark hover:text-swiss-gold transition-colors duration-500 mb-4 md:mb-0 relative overflow-hidden"
           >
-            <span className="inline-block group-hover:scale-105 transition-transform duration-300">CONTACT US</span>
-            <div className="absolute -inset-4 bg-swiss-gold/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
+            <span className="inline-block relative z-10">CONTACT US</span>
+            <div className="absolute inset-0 -translate-x-full animate-shine bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
           </a>
           
           <div className="mt-12 md:mt-16 grid md:grid-cols-3 gap-8 md:gap-12 text-center md:text-left max-w-4xl mx-auto border-t border-swiss-dark/10 pt-8 md:pt-12">
