@@ -234,30 +234,25 @@ const App: React.FC = () => {
                {RENOVATION_SERVICES.map((service, i) => (
                  <div 
                    key={i} 
-                   className="group cursor-none bg-white/60 backdrop-blur-sm rounded-xl p-5 border border-swiss-dark/5 hover:border-swiss-gold/50 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col items-center justify-center text-center min-h-[140px] relative overflow-hidden"
+                   className="group cursor-none bg-white/60 backdrop-blur-sm rounded-xl p-5 border border-swiss-dark/5 md:hover:border-swiss-gold/50 shadow-sm md:hover:shadow-xl transition-all duration-300 md:hover:-translate-y-1 flex flex-col items-center justify-center text-center min-h-[120px] relative overflow-hidden"
                  >
-                   {/* Animated background */}
-                   <div className="absolute inset-0 bg-gradient-to-br from-swiss-gold/0 to-swiss-gold/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                   {/* Animated background - desktop only */}
+                   <div className="hidden md:block absolute inset-0 bg-gradient-to-br from-swiss-gold/0 to-swiss-gold/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                    
                    {/* Number badge */}
-                   <div className="absolute top-2 right-2 w-6 h-6 rounded-full bg-swiss-gold/20 flex items-center justify-center group-hover:bg-swiss-gold/40 transition-colors">
+                   <div className="absolute top-2 right-2 w-6 h-6 rounded-full bg-swiss-gold/20 flex items-center justify-center md:group-hover:bg-swiss-gold/40 transition-colors">
                      <span className="text-[10px] font-display text-swiss-dark font-bold">
                        {String(i + 1).padStart(2, '0')}
                      </span>
                    </div>
                    
-                   {/* Decorative icon placeholder */}
-                   <div className="w-12 h-12 mb-3 rounded-full bg-swiss-gold/20 flex items-center justify-center group-hover:bg-swiss-gold/30 transition-all duration-300 group-hover:scale-110 relative z-10">
-                     <div className="w-6 h-6 border-2 border-swiss-dark/40 rounded-sm group-hover:rotate-45 transition-transform duration-500"></div>
-                   </div>
-                   
                    {/* Service name */}
-                   <span className="text-sm font-serif italic text-swiss-stone group-hover:text-swiss-dark transition-colors duration-300 leading-tight relative z-10">
+                   <span className="text-sm font-serif italic text-swiss-dark md:text-swiss-stone md:group-hover:text-swiss-dark transition-colors duration-300 leading-tight relative z-10">
                      {service}
                    </span>
                    
-                   {/* Bottom accent line */}
-                   <div className="absolute bottom-0 left-0 h-1 w-0 bg-swiss-gold group-hover:w-full transition-all duration-500"></div>
+                   {/* Bottom accent line - desktop only */}
+                   <div className="hidden md:block absolute bottom-0 left-0 h-1 w-0 bg-swiss-gold group-hover:w-full transition-all duration-500"></div>
                  </div>
                ))}
              </div>
