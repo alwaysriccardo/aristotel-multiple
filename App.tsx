@@ -396,21 +396,21 @@ const App: React.FC = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-[#E8DCC8]/95 to-[#D4C5B0]/95"></div>
         </div>
 
-        <div className="footer-content relative z-10 text-center px-4 w-full max-w-4xl mx-auto">
-          <p className="text-xs md:text-sm uppercase tracking-[0.4em] mb-6 md:mb-8 text-[#8B7355]">Request a Free Quote</p>
+        <div className="footer-content relative z-10 text-center px-4 w-full max-w-6xl mx-auto">
+          <p className="text-[10px] md:text-sm uppercase tracking-[0.3em] md:tracking-[0.4em] mb-4 md:mb-8 text-[#8B7355]">Request a Free Quote</p>
           
           <a 
             href={`mailto:${CONTACT_INFO.email}`} 
-            className="inline-block font-display text-[12vw] sm:text-[10vw] md:text-[6vw] leading-none text-swiss-dark hover:text-swiss-gold transition-all duration-300 mb-6 relative overflow-hidden group/btn cursor-pointer active:scale-95"
+            className="inline-block font-display text-[9vw] sm:text-[8vw] md:text-[6vw] leading-none text-swiss-dark hover:text-swiss-gold transition-all duration-300 mb-3 md:mb-6 relative overflow-hidden group/btn cursor-pointer active:scale-95"
             style={{
-              textShadow: '2px 2px 0px rgba(197, 160, 89, 0.3), 4px 4px 0px rgba(197, 160, 89, 0.2), 6px 6px 0px rgba(197, 160, 89, 0.1)',
+              textShadow: '1px 1px 0px rgba(197, 160, 89, 0.3), 2px 2px 0px rgba(197, 160, 89, 0.2), 3px 3px 0px rgba(197, 160, 89, 0.1)',
               transform: 'translateZ(0)',
             }}
           >
             <span 
               className="inline-block relative z-10 transition-transform duration-300 group-hover/btn:translate-y-[-4px]"
               style={{
-                filter: 'drop-shadow(0 10px 20px rgba(0,0,0,0.15))',
+                filter: 'drop-shadow(0 5px 10px rgba(0,0,0,0.15))',
               }}
             >
               CONTACT US
@@ -418,22 +418,22 @@ const App: React.FC = () => {
             <div className="absolute inset-0 -translate-x-full animate-shine bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
           </a>
           
-          <p className="text-sm md:text-base font-serif italic text-[#6B5D4F] mb-8 animate-pulse">
+          <p className="text-xs md:text-base font-serif italic text-[#6B5D4F] mb-6 md:mb-8 animate-pulse">
             Click to get your personalized quote today →
           </p>
           
-          <div className="mt-12 md:mt-16 border-t border-swiss-dark/10 pt-8 md:pt-12 max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-12 items-start">
+          <div className="mt-6 md:mt-16 border-t border-swiss-dark/10 pt-6 md:pt-12 max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-6 md:gap-12 items-start">
               
               {/* Contact Form */}
-              <div className="bg-white/60 backdrop-blur-sm p-6 md:p-8 rounded-2xl border border-swiss-dark/10 shadow-lg">
-                <h3 className="font-display text-2xl text-swiss-dark mb-6">Quick Contact</h3>
-                <form className="space-y-4">
+              <div className="bg-white/60 backdrop-blur-sm p-4 md:p-8 rounded-xl md:rounded-2xl border border-swiss-dark/10 shadow-lg">
+                <h3 className="font-display text-lg md:text-2xl text-swiss-dark mb-4 md:mb-6">Quick Contact</h3>
+                <form className="space-y-3 md:space-y-4">
                   <div>
                     <input
                       type="text"
                       placeholder="Your Name"
-                      className="w-full px-4 py-3 bg-white/80 border border-swiss-dark/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-swiss-gold focus:border-transparent transition-all text-swiss-dark placeholder:text-[#8B7355]"
+                      className="w-full px-3 py-2 md:px-4 md:py-3 text-sm md:text-base bg-white/80 border border-swiss-dark/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-swiss-gold focus:border-transparent transition-all text-swiss-dark placeholder:text-[#8B7355]"
                       required
                     />
                   </div>
@@ -441,7 +441,7 @@ const App: React.FC = () => {
                     <input
                       type="email"
                       placeholder="Your Email"
-                      className="w-full px-4 py-3 bg-white/80 border border-swiss-dark/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-swiss-gold focus:border-transparent transition-all text-swiss-dark placeholder:text-[#8B7355]"
+                      className="w-full px-3 py-2 md:px-4 md:py-3 text-sm md:text-base bg-white/80 border border-swiss-dark/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-swiss-gold focus:border-transparent transition-all text-swiss-dark placeholder:text-[#8B7355]"
                       required
                     />
                   </div>
@@ -449,20 +449,20 @@ const App: React.FC = () => {
                     <input
                       type="tel"
                       placeholder="Phone Number"
-                      className="w-full px-4 py-3 bg-white/80 border border-swiss-dark/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-swiss-gold focus:border-transparent transition-all text-swiss-dark placeholder:text-[#8B7355]"
+                      className="w-full px-3 py-2 md:px-4 md:py-3 text-sm md:text-base bg-white/80 border border-swiss-dark/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-swiss-gold focus:border-transparent transition-all text-swiss-dark placeholder:text-[#8B7355]"
                     />
                   </div>
                   <div>
                     <textarea
                       placeholder="Tell us about your project..."
                       rows={3}
-                      className="w-full px-4 py-3 bg-white/80 border border-swiss-dark/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-swiss-gold focus:border-transparent transition-all text-swiss-dark placeholder:text-[#8B7355] resize-none"
+                      className="w-full px-3 py-2 md:px-4 md:py-3 text-sm md:text-base bg-white/80 border border-swiss-dark/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-swiss-gold focus:border-transparent transition-all text-swiss-dark placeholder:text-[#8B7355] resize-none"
                       required
                     ></textarea>
                   </div>
                   <button
                     type="submit"
-                    className="w-full bg-swiss-gold hover:bg-[#b89448] text-white font-display text-sm uppercase tracking-wider py-3 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 shine-effect"
+                    className="w-full bg-swiss-gold hover:bg-[#b89448] text-white font-display text-xs md:text-sm uppercase tracking-wider py-2.5 md:py-3 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 shine-effect"
                   >
                     Send Message
                   </button>
@@ -470,40 +470,40 @@ const App: React.FC = () => {
               </div>
 
               {/* Contact Information */}
-              <div className="space-y-8">
-                <div className="flex items-start gap-4 group">
+              <div className="space-y-5 md:space-y-8">
+                <div className="flex items-start gap-3 md:gap-4 group">
                   <a 
                     href={`tel:${CONTACT_INFO.phone}`}
-                    className="flex-shrink-0 w-12 h-12 bg-swiss-gold/20 rounded-full flex items-center justify-center hover:bg-swiss-gold hover:scale-110 transition-all duration-300 cursor-pointer group-hover:rotate-12"
+                    className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 bg-swiss-gold/20 rounded-full flex items-center justify-center hover:bg-swiss-gold hover:scale-110 transition-all duration-300 cursor-pointer group-hover:rotate-12"
                   >
-                    <Phone className="text-swiss-dark w-5 h-5" />
+                    <Phone className="text-swiss-dark w-4 h-4 md:w-5 md:h-5" />
                   </a>
-                  <div>
-                    <p className="font-serif italic text-lg md:text-xl text-swiss-dark mb-1">Phone</p>
-                    <a href={`tel:${CONTACT_INFO.phone}`} className="text-[#6B5D4F] hover:text-swiss-dark transition-colors text-base md:text-lg">{CONTACT_INFO.phone}</a>
+                  <div className="min-w-0 flex-1">
+                    <p className="font-serif italic text-base md:text-xl text-swiss-dark mb-1">Phone</p>
+                    <a href={`tel:${CONTACT_INFO.phone}`} className="text-[#6B5D4F] hover:text-swiss-dark transition-colors text-sm md:text-lg">{CONTACT_INFO.phone}</a>
                   </div>
                 </div>
                 
-                <div className="flex items-start gap-4 group">
+                <div className="flex items-start gap-3 md:gap-4 group">
                   <a
                     href={`mailto:${CONTACT_INFO.email}`}
-                    className="flex-shrink-0 w-12 h-12 bg-swiss-gold/20 rounded-full flex items-center justify-center hover:bg-swiss-gold hover:scale-110 transition-all duration-300 cursor-pointer group-hover:rotate-12"
+                    className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 bg-swiss-gold/20 rounded-full flex items-center justify-center hover:bg-swiss-gold hover:scale-110 transition-all duration-300 cursor-pointer group-hover:rotate-12"
                   >
-                    <Mail className="text-swiss-dark w-5 h-5" />
+                    <Mail className="text-swiss-dark w-4 h-4 md:w-5 md:h-5" />
                   </a>
-                  <div>
-                    <p className="font-serif italic text-lg md:text-xl text-swiss-dark mb-1">Email</p>
-                    <a href={`mailto:${CONTACT_INFO.email}`} className="text-[#6B5D4F] hover:text-swiss-dark transition-colors text-base md:text-lg break-all">{CONTACT_INFO.email}</a>
+                  <div className="min-w-0 flex-1">
+                    <p className="font-serif italic text-base md:text-xl text-swiss-dark mb-1">Email</p>
+                    <a href={`mailto:${CONTACT_INFO.email}`} className="text-[#6B5D4F] hover:text-swiss-dark transition-colors text-sm md:text-lg break-all">{CONTACT_INFO.email}</a>
                   </div>
                 </div>
                 
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-swiss-gold/20 rounded-full flex items-center justify-center">
-                    <MapPin className="text-swiss-dark w-5 h-5" />
+                <div className="flex items-start gap-3 md:gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 md:w-12 md:h-12 bg-swiss-gold/20 rounded-full flex items-center justify-center">
+                    <MapPin className="text-swiss-dark w-4 h-4 md:w-5 md:h-5" />
                   </div>
-                  <div>
-                    <p className="font-serif italic text-lg md:text-xl text-swiss-dark mb-1">Service Areas</p>
-                    <p className="text-[#6B5D4F] text-base md:text-lg leading-relaxed">
+                  <div className="min-w-0 flex-1">
+                    <p className="font-serif italic text-base md:text-xl text-swiss-dark mb-1">Service Areas</p>
+                    <p className="text-[#6B5D4F] text-sm md:text-lg leading-relaxed">
                       Zürich • Aargau • Basel<br/>
                       Zug • Luzern • Bern
                     </p>
