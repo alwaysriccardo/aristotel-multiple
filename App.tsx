@@ -15,7 +15,46 @@ gsap.registerPlugin(ScrollTrigger);
 const App: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const wrapperRef = useRef<HTMLDivElement>(null);
+  const carouselRef = useRef<HTMLDivElement>(null);
   
+  // Auto-scroll carousel
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    if (!carousel) return;
+
+    let scrollInterval: NodeJS.Timeout;
+    let isPaused = false;
+
+    const startAutoScroll = () => {
+      scrollInterval = setInterval(() => {
+        if (!isPaused && carousel) {
+          const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+          const currentScroll = carousel.scrollLeft;
+          
+          if (currentScroll >= maxScroll - 10) {
+            carousel.scrollTo({ left: 0, behavior: 'smooth' });
+          } else {
+            carousel.scrollBy({ left: 2, behavior: 'auto' });
+          }
+        }
+      }, 30);
+    };
+
+    const handleMouseEnter = () => { isPaused = true; };
+    const handleMouseLeave = () => { isPaused = false; };
+
+    carousel.addEventListener('mouseenter', handleMouseEnter);
+    carousel.addEventListener('mouseleave', handleMouseLeave);
+    
+    startAutoScroll();
+
+    return () => {
+      clearInterval(scrollInterval);
+      carousel.removeEventListener('mouseenter', handleMouseEnter);
+      carousel.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, [loading]);
+
   // Initialize Lenis and global animations
   useEffect(() => {
     if (loading) return;
@@ -278,9 +317,9 @@ const App: React.FC = () => {
         </section>
 
         {/* CLEANING SERVICES SHOWCASE */}
-        <section className="py-32 px-6 md:px-20 bg-swiss-cream text-swiss-dark relative overflow-hidden">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-20 reveal-text">
+        <section className="py-32 bg-swiss-cream text-swiss-dark relative overflow-hidden">
+          <div className="max-w-full">
+            <div className="text-center mb-12 reveal-text px-6 md:px-20">
               <span className="text-xs uppercase tracking-[0.3em] text-swiss-gold">Professional Cleaning</span>
               <h2 className="font-display text-4xl md:text-5xl mt-4">Cleaning Services</h2>
               <p className="font-body text-swiss-stone mt-6 max-w-2xl mx-auto">
@@ -288,13 +327,18 @@ const App: React.FC = () => {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8">
-              {CLEANING_PROJECTS.map((project, index) => (
+            {/* Horizontal Scrolling Carousel */}
+            <div 
+              ref={carouselRef}
+              className="flex gap-6 overflow-x-auto scrollbar-hide px-6 md:px-20 pb-4 cursor-grab active:cursor-grabbing"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              {[...CLEANING_PROJECTS, ...CLEANING_PROJECTS].map((project, index) => (
                 <div 
-                  key={project.id}
-                  className="reveal-text group cursor-none bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+                  key={`${project.id}-${index}`}
+                  className="flex-shrink-0 w-[85vw] md:w-[450px] group cursor-pointer bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
                 >
-                  <div className="relative h-64 md:h-80 overflow-hidden">
+                  <div className="relative h-64 md:h-72 overflow-hidden">
                     <img 
                       src={project.image} 
                       alt={project.title}
@@ -306,8 +350,8 @@ const App: React.FC = () => {
                     </div>
                   </div>
                   
-                  <div className="p-8">
-                    <h3 className="font-serif text-2xl md:text-3xl italic mb-3">{project.title}</h3>
+                  <div className="p-6 md:p-8">
+                    <h3 className="font-serif text-xl md:text-2xl italic mb-3">{project.title}</h3>
                     <div className="flex flex-wrap gap-2 mb-4">
                       {project.categories.map(cat => (
                         <span key={cat} className="text-[10px] uppercase tracking-wider border border-swiss-dark/20 px-3 py-1 rounded-full text-swiss-stone">
@@ -315,7 +359,7 @@ const App: React.FC = () => {
                         </span>
                       ))}
                     </div>
-                    <p className="text-swiss-stone leading-relaxed">{project.description}</p>
+                    <p className="text-swiss-stone leading-relaxed text-sm md:text-base">{project.description}</p>
                   </div>
                 </div>
               ))}
