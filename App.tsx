@@ -195,7 +195,7 @@ const App: React.FC = () => {
               Licensed, insured, and committed to getting the job done right.
             </p>
             <div className="flex gap-4 items-center text-swiss-dark font-medium uppercase tracking-widest text-sm pt-8">
-              <span>Est. 2024</span>
+              <span>Est. 2026</span>
               <span className="w-2 h-2 rounded-full bg-swiss-gold"></span>
               <span>Licensed & Insured</span>
             </div>
