@@ -401,11 +401,26 @@ const App: React.FC = () => {
           
           <a 
             href={`mailto:${CONTACT_INFO.email}`} 
-            className="inline-block font-display text-[12vw] sm:text-[10vw] md:text-[6vw] leading-none text-swiss-dark hover:text-swiss-gold transition-colors duration-500 mb-4 md:mb-0 relative overflow-hidden"
+            className="inline-block font-display text-[12vw] sm:text-[10vw] md:text-[6vw] leading-none text-swiss-dark hover:text-swiss-gold transition-all duration-300 mb-6 relative overflow-hidden group/btn cursor-pointer active:scale-95"
+            style={{
+              textShadow: '2px 2px 0px rgba(197, 160, 89, 0.3), 4px 4px 0px rgba(197, 160, 89, 0.2), 6px 6px 0px rgba(197, 160, 89, 0.1)',
+              transform: 'translateZ(0)',
+            }}
           >
-            <span className="inline-block relative z-10">CONTACT US</span>
+            <span 
+              className="inline-block relative z-10 transition-transform duration-300 group-hover/btn:translate-y-[-4px]"
+              style={{
+                filter: 'drop-shadow(0 10px 20px rgba(0,0,0,0.15))',
+              }}
+            >
+              CONTACT US
+            </span>
             <div className="absolute inset-0 -translate-x-full animate-shine bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
           </a>
+          
+          <p className="text-sm md:text-base font-serif italic text-[#6B5D4F] mb-8 animate-pulse">
+            Click to get your personalized quote today →
+          </p>
           
           <div className="mt-12 md:mt-16 grid md:grid-cols-3 gap-8 md:gap-12 text-center md:text-left max-w-4xl mx-auto border-t border-swiss-dark/10 pt-8 md:pt-12">
             <div className="flex flex-col items-center md:items-start gap-3">
