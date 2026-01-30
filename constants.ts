@@ -74,7 +74,7 @@ export const REVIEWS = [
     location: "Basel",
     rating: 5,
     date: "1 month ago",
-    text: "Patricia is absolutely wonderful to work with! She helped us with our move-out cleaning and made the whole process so stress-free. Super friendly, answered all our questions, and the place looked spotless. Got our warehouse back without any issues. Highly recommend!"
+    text: "Patricia is absolutely wonderful to work with! She helped us with our move-out cleaning and made the whole process so stress-free. Super friendly, answered all our questions, and the place looked spotless. Highly recommend!"
   },
   {
     id: 3,
