@@ -99,21 +99,21 @@ export const CLEANING_PROJECTS: ServiceItem[] = [
     id: "01",
     title: "Post-Renovation Cleaning",
     description: "Removed all construction dust and debris from 120m² apartment after complete renovation. Includes dust removal from all surfaces, floor cleaning, and window washing. Ready for immediate move-in.",
-    image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=2574&auto=format&fit=crop",
+    image: "/01.jpeg",
     categories: ["Deep Cleaning", "Post-Renovation"]
   },
   {
     id: "02",
     title: "Move-Out Cleaning Service",
     description: "Complete end-of-tenancy cleaning including kitchen appliances, bathroom sanitization, and window cleaning. Meets Swiss rental standards for deposit return.",
-    image: "https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?q=80&w=2670&auto=format&fit=crop",
+    image: "/02.jpeg",
     categories: ["Move-Out", "Window Cleaning"]
   },
   {
     id: "03",
     title: "Office Deep Cleaning",
     description: "Regular deep cleaning service for 200m² office space. Includes floor care, desk sanitization, and common area maintenance. Scheduled during off-hours to avoid business disruption.",
-    image: "https://images.unsplash.com/photo-1563453392212-326f5e854473?q=80&w=2670&auto=format&fit=crop",
+    image: "/03.jpg",
     categories: ["Deep Cleaning", "Commercial"]
   },
   {
