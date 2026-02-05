@@ -11,6 +11,10 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
   const progressRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // Set initial states
+    gsap.set(logoRef.current, { scale: 0.75, opacity: 0 });
+    gsap.set(progressRef.current, { width: 0 });
+
     const tl = gsap.timeline({
       onComplete: () => {
         onComplete();
@@ -61,12 +65,12 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
       ref={containerRef} 
       className="fixed inset-0 z-[10000] bg-gradient-to-br from-[#E8DCC8] via-[#D4C5B0] to-[#C9A961] flex flex-col justify-center items-center"
     >
-      <div className="overflow-hidden mb-8">
+      <div className="overflow-visible mb-8">
         <img 
           ref={logoRef} 
           src="/logoaristotel.png" 
           alt="Aristotel Multiple Logo"
-          className="w-48 md:w-64 h-auto scale-75 opacity-0"
+          className="w-48 md:w-64 h-auto"
         />
       </div>
       <div className="w-64 h-[2px] bg-white/30 relative overflow-hidden rounded-full">
