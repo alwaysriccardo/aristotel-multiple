@@ -16,8 +16,14 @@ const Navigation: React.FC = () => {
     };
   }, [isMenuOpen]);
 
-  const handleLinkClick = () => {
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
     setIsMenuOpen(false);
+    
+    const element = document.getElementById(targetId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   };
 
   return (
@@ -28,9 +34,9 @@ const Navigation: React.FC = () => {
         </div>
         
         <div className="hidden md:flex gap-10 text-xs uppercase tracking-[0.2em] font-medium text-white mix-blend-difference">
-          <a href="#projects" className="hover:text-swiss-gold transition-colors">Projects</a>
-          <a href="#services" className="hover:text-swiss-gold transition-colors">Services</a>
-          <a href="#contact" className="hover:text-swiss-gold transition-colors">Contact</a>
+          <a href="#projects" className="hover:text-swiss-gold transition-colors" onClick={(e) => handleLinkClick(e, 'projects')}>Projects</a>
+          <a href="#services" className="hover:text-swiss-gold transition-colors" onClick={(e) => handleLinkClick(e, 'services')}>Services</a>
+          <a href="#contact" className="hover:text-swiss-gold transition-colors" onClick={(e) => handleLinkClick(e, 'contact')}>Contact</a>
         </div>
         
         <button 
@@ -52,21 +58,21 @@ const Navigation: React.FC = () => {
           <a 
             href="#projects" 
             className="font-display text-4xl hover:text-swiss-gold transition-colors tracking-tight"
-            onClick={handleLinkClick}
+            onClick={(e) => handleLinkClick(e, 'projects')}
           >
             PROJECTS
           </a>
           <a 
             href="#services" 
             className="font-display text-4xl hover:text-swiss-gold transition-colors tracking-tight"
-            onClick={handleLinkClick}
+            onClick={(e) => handleLinkClick(e, 'services')}
           >
             SERVICES
           </a>
           <a 
             href="#contact" 
             className="font-display text-4xl hover:text-swiss-gold transition-colors tracking-tight"
-            onClick={handleLinkClick}
+            onClick={(e) => handleLinkClick(e, 'contact')}
           >
             CONTACT
           </a>
