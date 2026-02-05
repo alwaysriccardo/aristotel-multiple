@@ -11,52 +11,61 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
   const progressRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Set initial states
-    gsap.set(logoRef.current, { scale: 0.75, opacity: 0 });
-    gsap.set(progressRef.current, { width: 0 });
+    // Wait a moment to ensure DOM is ready
+    const initAnimation = () => {
+      if (!logoRef.current || !progressRef.current) return;
 
-    const tl = gsap.timeline({
-      onComplete: () => {
-        onComplete();
-        if (containerRef.current) {
-          containerRef.current.style.display = 'none';
+      // Set initial states explicitly
+      gsap.set(logoRef.current, { scale: 0.75, opacity: 0, visibility: 'visible' });
+      gsap.set(progressRef.current, { width: 0 });
+
+      const tl = gsap.timeline({
+        onComplete: () => {
+          onComplete();
+          if (containerRef.current) {
+            containerRef.current.style.display = 'none';
+          }
         }
-      }
-    });
+      });
 
-    // Reveal logo with scale and fade
-    tl.to(logoRef.current, {
-      scale: 1,
-      opacity: 1,
-      duration: 1,
-      ease: "power3.out"
-    })
-    // Progress bar
-    .to(progressRef.current, {
-      width: "100%",
-      duration: 1.5,
-      ease: "power2.inOut"
-    }, "-=0.5")
-    // Slight pulse effect
-    .to(logoRef.current, {
-      scale: 1.05,
-      duration: 0.3,
-      ease: "power1.inOut",
-      yoyo: true,
-      repeat: 1
-    })
-    // Fade out logo
-    .to(logoRef.current, {
-      scale: 0.9,
-      opacity: 0,
-      duration: 0.5
-    })
-    // Slide up curtain
-    .to(containerRef.current, {
-      yPercent: -100,
-      duration: 1.2,
-      ease: "power4.inOut"
-    });
+      // Reveal logo with scale and fade
+      tl.to(logoRef.current, {
+        scale: 1,
+        opacity: 1,
+        duration: 1,
+        ease: "power3.out"
+      })
+      // Progress bar
+      .to(progressRef.current, {
+        width: "100%",
+        duration: 1.5,
+        ease: "power2.inOut"
+      }, "-=0.5")
+      // Slight pulse effect
+      .to(logoRef.current, {
+        scale: 1.05,
+        duration: 0.3,
+        ease: "power1.inOut",
+        yoyo: true,
+        repeat: 1
+      })
+      // Fade out logo
+      .to(logoRef.current, {
+        scale: 0.9,
+        opacity: 0,
+        duration: 0.5
+      })
+      // Slide up curtain
+      .to(containerRef.current, {
+        yPercent: -100,
+        duration: 1.2,
+        ease: "power4.inOut"
+      });
+    };
+
+    // Small delay to ensure everything is mounted
+    const timer = setTimeout(initAnimation, 100);
+    return () => clearTimeout(timer);
 
   }, [onComplete]);
 
@@ -65,12 +74,17 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
       ref={containerRef} 
       className="fixed inset-0 z-[10000] bg-gradient-to-br from-[#E8DCC8] via-[#D4C5B0] to-[#C9A961] flex flex-col justify-center items-center"
     >
-      <div className="overflow-visible mb-8">
+      <div className="mb-8 flex items-center justify-center">
         <img 
           ref={logoRef} 
           src="/logoaristotel.png" 
           alt="Aristotel Multiple Logo"
-          className="w-48 md:w-64 h-auto"
+          className="w-48 md:w-64 h-auto max-w-full"
+          onError={(e) => {
+            console.error('Logo failed to load');
+            e.currentTarget.style.display = 'none';
+          }}
+          onLoad={() => console.log('Logo loaded successfully')}
         />
       </div>
       <div className="w-64 h-[2px] bg-white/30 relative overflow-hidden rounded-full">
