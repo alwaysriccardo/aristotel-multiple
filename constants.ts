@@ -120,7 +120,7 @@ export const CLEANING_PROJECTS: ServiceItem[] = [
     id: "04",
     title: "Construction Cleanup",
     description: "Removed 2 tons of construction waste and cleaned entire property after major renovation. Includes debris removal, heavy-duty cleaning, and final polish.",
-    image: "https://images.unsplash.com/photo-1585421514738-01798e348b17?q=80&w=2670&auto=format&fit=crop",
+    image: "/04-cleaning.jpg",
     categories: ["Waste Removal", "Deep Cleaning"]
   }
 ];
