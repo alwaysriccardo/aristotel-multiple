@@ -8,6 +8,7 @@ import Preloader from './components/Preloader';
 import Navigation from './components/Navigation';
 import CustomCursor from './components/CustomCursor';
 import FloatingActions from './components/FloatingActions';
+import LanguageSelector from './components/LanguageSelector';
 import { CONTACT_INFO, LOCATIONS, RENOVATION_SERVICES, CLEANING_SERVICES, FEATURED_PROJECTS, CLEANING_PROJECTS, REVIEWS } from './constants';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -151,6 +152,7 @@ const App: React.FC = () => {
       <CustomCursor />
       <Navigation />
       <FloatingActions />
+      <LanguageSelector />
 
       <div ref={wrapperRef} className="relative z-10 bg-swiss-cream mb-[100vh] shadow-2xl">
         
