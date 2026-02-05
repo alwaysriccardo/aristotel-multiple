@@ -7,7 +7,7 @@ interface PreloaderProps {
 
 const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
+  const logoRef = useRef<HTMLImageElement>(null);
   const progressRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -20,9 +20,9 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
       }
     });
 
-    // Reveal text
-    tl.to(textRef.current, {
-      y: 0,
+    // Reveal logo with scale and fade
+    tl.to(logoRef.current, {
+      scale: 1,
       opacity: 1,
       duration: 1,
       ease: "power3.out"
@@ -33,9 +33,17 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
       duration: 1.5,
       ease: "power2.inOut"
     }, "-=0.5")
-    // Fade out text
-    .to(textRef.current, {
-      y: -50,
+    // Slight pulse effect
+    .to(logoRef.current, {
+      scale: 1.05,
+      duration: 0.3,
+      ease: "power1.inOut",
+      yoyo: true,
+      repeat: 1
+    })
+    // Fade out logo
+    .to(logoRef.current, {
+      scale: 0.9,
       opacity: 0,
       duration: 0.5
     })
@@ -51,20 +59,20 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
   return (
     <div 
       ref={containerRef} 
-      className="fixed inset-0 z-[10000] bg-swiss-cream flex flex-col justify-center items-center text-swiss-dark"
+      className="fixed inset-0 z-[10000] bg-gradient-to-br from-[#E8DCC8] via-[#D4C5B0] to-[#C9A961] flex flex-col justify-center items-center"
     >
       <div className="overflow-hidden mb-8">
-        <h1 
-          ref={textRef} 
-          className="font-display text-4xl md:text-6xl font-bold translate-y-full opacity-0"
-        >
-          ARISTOTEL MULTIPLE
-        </h1>
+        <img 
+          ref={logoRef} 
+          src="/logoaristotel.png" 
+          alt="Aristotel Multiple Logo"
+          className="w-48 md:w-64 h-auto scale-75 opacity-0"
+        />
       </div>
-      <div className="w-64 h-[2px] bg-gray-300 relative overflow-hidden">
+      <div className="w-64 h-[2px] bg-white/30 relative overflow-hidden rounded-full">
         <div 
           ref={progressRef} 
-          className="absolute left-0 top-0 h-full bg-swiss-dark w-0" 
+          className="absolute left-0 top-0 h-full bg-gradient-to-r from-[#C9A961] to-white w-0 rounded-full" 
         />
       </div>
     </div>
