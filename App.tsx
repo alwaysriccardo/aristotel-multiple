@@ -10,6 +10,7 @@ import CustomCursor from './components/CustomCursor';
 import FloatingActions from './components/FloatingActions';
 import LanguageSelector from './components/LanguageSelector';
 import { useLanguage } from './LanguageContext';
+import { TranslationKey } from './translations';
 import { CONTACT_INFO, LOCATIONS, RENOVATION_SERVICES, CLEANING_SERVICES, FEATURED_PROJECTS, CLEANING_PROJECTS, REVIEWS } from './constants';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -182,19 +183,19 @@ const App: React.FC = () => {
         {/* INTRODUCTION */}
         <section className="py-32 px-6 md:px-20 max-w-[1800px] mx-auto grid md:grid-cols-2 gap-16">
           <div>
-            <h2 className="font-display text-4xl md:text-6xl leading-tight reveal-text text-swiss-dark">
+            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight reveal-text text-swiss-dark">
               {t('intro_title')} <br />
               <span className="text-swiss-gold italic font-serif">{t('intro_subtitle')}</span>
             </h2>
           </div>
-          <div className="font-body text-xl font-light leading-relaxed text-swiss-stone space-y-8 reveal-text">
+          <div className="font-body text-base sm:text-lg md:text-xl font-light leading-relaxed text-swiss-stone space-y-8 reveal-text mt-8 md:mt-0">
             <p>
               {t('intro_desc')}
             </p>
-            <div className="flex gap-4 items-center text-swiss-dark font-medium uppercase tracking-widest text-sm pt-8">
+            <div className="flex flex-wrap gap-3 md:gap-4 items-center text-swiss-dark font-medium uppercase tracking-widest text-xs md:text-sm pt-8">
               <span>{t('intro_est')}</span>
               <span className="w-2 h-2 rounded-full bg-swiss-gold"></span>
-              <span>{t('intro_licensed')}</span>
+              <span className="whitespace-nowrap">{t('intro_licensed')}</span>
             </div>
           </div>
         </section>
@@ -213,9 +214,9 @@ const App: React.FC = () => {
 
         {/* PROJECTS STACK */}
         <section id="projects" className="py-24 bg-swiss-dark text-swiss-cream relative px-4 md:px-0">
-          <div className="text-center mb-24 reveal-text">
+          <div className="text-center mb-24 reveal-text px-4">
             <span className="text-xs uppercase tracking-[0.3em] text-swiss-gold">{t('projects_subtitle')}</span>
-            <h2 className="font-display text-4xl md:text-6xl mt-4">{t('projects_title')}</h2>
+            <h2 className="font-display text-2xl sm:text-3xl md:text-5xl lg:text-6xl mt-4">{t('projects_title')}</h2>
           </div>
 
           <div className="max-w-6xl mx-auto pb-20">
@@ -225,7 +226,7 @@ const App: React.FC = () => {
                   <div className="p-8 md:p-12 flex flex-col justify-between z-10 bg-[#D4C5B0]">
                     <div>
                       <span className="font-display text-6xl md:text-8xl opacity-10 absolute top-4 left-6 text-[#8B7355]">{project.id}</span>
-                      <h3 className="font-serif text-3xl md:text-4xl italic mt-12 mb-2 text-swiss-dark">{project.title}</h3>
+                      <h3 className="font-serif text-3xl md:text-4xl italic mt-12 mb-2 text-swiss-dark">{t(`project_${project.id}_title` as TranslationKey)}</h3>
                       <div className="flex flex-wrap gap-2 mb-6">
                         {project.categories.map(cat => (
                           <span key={cat} className="text-[10px] uppercase tracking-wider border border-swiss-dark/20 px-2 py-1 rounded-full text-swiss-dark/60">
@@ -234,7 +235,7 @@ const App: React.FC = () => {
                         ))}
                       </div>
                       <p className="text-[#6B5D4F] font-light leading-relaxed">
-                        {project.description}
+                        {t(`project_${project.id}_desc` as TranslationKey)}
                       </p>
                     </div>
                     <a 
@@ -265,9 +266,9 @@ const App: React.FC = () => {
            <div className="absolute bottom-0 left-0 w-96 h-96 bg-swiss-dark/5 rounded-full blur-3xl"></div>
            
            <div className="max-w-7xl mx-auto relative z-10">
-             <div className="text-center mb-12 reveal-text">
+             <div className="text-center mb-12 reveal-text px-4">
                <span className="text-xs uppercase tracking-[0.3em] text-swiss-gold">{t('reno_subtitle')}</span>
-               <h2 className="font-display text-3xl md:text-4xl mt-4">{t('reno_title')}</h2>
+               <h2 className="font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl mt-4">{t('reno_title')}</h2>
              </div>
 
              <div className="reveal-text grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 max-w-6xl mx-auto">
@@ -286,10 +287,10 @@ const App: React.FC = () => {
                      </span>
                    </div>
                    
-                   {/* Service name */}
-                   <span className="text-sm font-serif italic text-swiss-dark md:text-swiss-stone md:group-hover:text-swiss-dark transition-colors duration-300 leading-tight relative z-10">
-                     {service}
-                   </span>
+                  {/* Service name */}
+                  <span className="text-sm font-serif italic text-swiss-dark md:text-swiss-stone md:group-hover:text-swiss-dark transition-colors duration-300 leading-tight relative z-10">
+                    {t(`service_${i + 1}` as TranslationKey)}
+                  </span>
                    
                    {/* Bottom accent line - desktop only */}
                    <div className="hidden md:block absolute bottom-0 left-0 h-1 w-0 bg-swiss-gold group-hover:w-full transition-all duration-500"></div>
@@ -300,7 +301,7 @@ const App: React.FC = () => {
              {/* Call to action */}
              <div className="text-center mt-12 reveal-text">
                <p className="font-body text-swiss-stone text-sm max-w-xl mx-auto mb-8">
-                 All work performed by experienced professionals. Free quotes available.
+                 {t('reno_disclaimer')}
                </p>
                <a
                 href={`mailto:${CONTACT_INFO.email}?subject=Renovation Quote Request`}
@@ -318,7 +319,7 @@ const App: React.FC = () => {
           <div className="max-w-full">
             <div className="text-center mb-12 reveal-text px-6 md:px-20">
               <span className="text-xs uppercase tracking-[0.3em] text-swiss-gold">{t('clean_subtitle')}</span>
-              <h2 className="font-display text-4xl md:text-5xl mt-4">{t('clean_title')}</h2>
+              <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl mt-4">{t('clean_title')}</h2>
             </div>
 
             {/* Horizontal Scrolling Carousel */}
@@ -345,7 +346,7 @@ const App: React.FC = () => {
                   </div>
                   
                   <div className="p-6 md:p-8">
-                    <h3 className="font-serif text-xl md:text-2xl italic mb-3">{project.title}</h3>
+                    <h3 className="font-serif text-xl md:text-2xl italic mb-3">{t(`clean_${project.id}_title` as TranslationKey)}</h3>
                     <div className="flex flex-wrap gap-2 mb-4">
                       {project.categories.map(cat => (
                         <span key={cat} className="text-[10px] uppercase tracking-wider border border-swiss-dark/20 px-3 py-1 rounded-full text-swiss-stone">
@@ -353,7 +354,7 @@ const App: React.FC = () => {
                         </span>
                       ))}
                     </div>
-                    <p className="text-swiss-stone leading-relaxed text-sm md:text-base">{project.description}</p>
+                    <p className="text-swiss-stone leading-relaxed text-sm md:text-base">{t(`clean_${project.id}_desc` as TranslationKey)}</p>
                   </div>
                 </div>
               ))}
@@ -361,13 +362,13 @@ const App: React.FC = () => {
 
             {/* Cleaning Services List */}
             <div className="mt-20 bg-gradient-to-br from-swiss-dark to-black text-swiss-cream rounded-3xl p-12 md:p-16 reveal-text">
-              <h3 className="font-display text-3xl md:text-4xl mb-8 text-center">What We Clean</h3>
+              <h3 className="font-display text-3xl md:text-4xl mb-8 text-center">{t('clean_what_title')}</h3>
               <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
                 {CLEANING_SERVICES.map((service, i) => (
                   <div key={i} className="flex items-center gap-4 group cursor-none">
                     <div className="w-3 h-3 rounded-full bg-swiss-gold group-hover:scale-150 transition-transform"></div>
                     <span className="text-lg md:text-xl font-serif italic text-swiss-stone group-hover:text-swiss-cream transition-colors">
-                      {service}
+                      {t(`clean_service_${i + 1}` as TranslationKey)}
                     </span>
                   </div>
                 ))}
@@ -379,9 +380,9 @@ const App: React.FC = () => {
         {/* REVIEWS SECTION */}
         <section className="py-20 bg-swiss-dark text-swiss-cream relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-6 md:px-20">
-            <div className="flex items-center justify-between mb-12 reveal-text">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-12 reveal-text gap-4">
               <div>
-                <h2 className="font-display text-3xl md:text-4xl">{t('reviews_title')}</h2>
+                <h2 className="font-display text-2xl sm:text-3xl md:text-4xl">{t('reviews_title')}</h2>
                 <div className="flex items-center gap-2 mt-3">
                   <div className="flex">
                     {[...Array(5)].map((_, i) => (
@@ -411,8 +412,8 @@ const App: React.FC = () => {
                       ))}
                     </div>
                   </div>
-                  <p className="text-sm text-swiss-stone leading-relaxed mb-3">{review.text}</p>
-                  <p className="text-xs text-swiss-stone/50">{review.date}</p>
+                  <p className="text-sm text-swiss-stone leading-relaxed mb-3">{t(`review_${review.id}_text` as TranslationKey)}</p>
+                  <p className="text-xs text-swiss-stone/50">{t(`review_${review.id}_date` as TranslationKey)}</p>
                 </div>
               ))}
             </div>
