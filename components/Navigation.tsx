@@ -20,10 +20,13 @@ const Navigation: React.FC = () => {
     e.preventDefault();
     setIsMenuOpen(false);
     
-    const element = document.getElementById(targetId);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    // Delay scroll to allow menu to close first (mobile)
+    setTimeout(() => {
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, 300);
   };
 
   return (
