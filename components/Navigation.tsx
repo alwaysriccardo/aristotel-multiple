@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { useLanguage } from '../LanguageContext';
 
 const Navigation: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   // Prevent body scroll when menu is open
   useEffect(() => {
@@ -45,9 +47,9 @@ const Navigation: React.FC = () => {
         </div>
         
         <div className="hidden md:flex gap-10 text-xs uppercase tracking-[0.2em] font-medium text-white mix-blend-difference">
-          <a href="#projects" className="hover:text-swiss-gold transition-colors" onClick={(e) => handleLinkClick(e, 'projects')}>Projects</a>
-          <a href="#services" className="hover:text-swiss-gold transition-colors" onClick={(e) => handleLinkClick(e, 'services')}>Services</a>
-          <a href="#contact" className="hover:text-swiss-gold transition-colors" onClick={(e) => handleLinkClick(e, 'contact')}>Contact</a>
+          <a href="#projects" className="hover:text-swiss-gold transition-colors" onClick={(e) => handleLinkClick(e, 'projects')}>{t('nav_projects')}</a>
+          <a href="#services" className="hover:text-swiss-gold transition-colors" onClick={(e) => handleLinkClick(e, 'services')}>{t('nav_services')}</a>
+          <a href="#contact" className="hover:text-swiss-gold transition-colors" onClick={(e) => handleLinkClick(e, 'contact')}>{t('nav_contact')}</a>
         </div>
         
         <button 
@@ -71,21 +73,21 @@ const Navigation: React.FC = () => {
             className="font-display text-4xl hover:text-swiss-gold transition-colors tracking-tight"
             onClick={(e) => handleLinkClick(e, 'projects')}
           >
-            PROJECTS
+            {t('nav_projects')}
           </a>
           <a 
             href="#services" 
             className="font-display text-4xl hover:text-swiss-gold transition-colors tracking-tight"
             onClick={(e) => handleLinkClick(e, 'services')}
           >
-            SERVICES
+            {t('nav_services')}
           </a>
           <a 
             href="#contact" 
             className="font-display text-4xl hover:text-swiss-gold transition-colors tracking-tight"
             onClick={(e) => handleLinkClick(e, 'contact')}
           >
-            CONTACT
+            {t('nav_contact')}
           </a>
           
           {/* Decorative Element */}
