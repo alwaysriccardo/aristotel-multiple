@@ -10,8 +10,8 @@ export const translations = {
     hero_author: "— ARISTOTELES",
     
     // Introduction
-    intro_title: "IHR VERTRAUENSWÜRDIGER",
-    intro_subtitle: "Renovierungspartner",
+    intro_title: "IHR PARTNER FÜR",
+    intro_subtitle: "Renovierung",
     intro_licensed: "Lizenziert, versichert",
     intro_quality: "Schweizer Qualität",
     intro_est: "Est. 2026",
