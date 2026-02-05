@@ -1,10 +1,9 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from '@studio-freight/lenis';
 import { ArrowDown, Mail, Phone, MapPin, ArrowRight, Star, MessageCircle } from 'lucide-react';
 
-import Preloader from './components/Preloader';
 import Navigation from './components/Navigation';
 import CustomCursor from './components/CustomCursor';
 import FloatingActions from './components/FloatingActions';
@@ -13,7 +12,6 @@ import { CONTACT_INFO, LOCATIONS, RENOVATION_SERVICES, CLEANING_SERVICES, FEATUR
 gsap.registerPlugin(ScrollTrigger);
 
 const App: React.FC = () => {
-  const [loading, setLoading] = useState(true);
   const wrapperRef = useRef<HTMLDivElement>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
   
@@ -53,11 +51,10 @@ const App: React.FC = () => {
       carousel.removeEventListener('mouseenter', handleMouseEnter);
       carousel.removeEventListener('mouseleave', handleMouseLeave);
     };
-  }, [loading]);
+  }, []);
 
   // Initialize Lenis and global animations
   useEffect(() => {
-    if (loading) return;
 
     // Fade in body
     gsap.to(document.body, { opacity: 1, duration: 0.5 });
@@ -144,11 +141,10 @@ const App: React.FC = () => {
       lenis.destroy();
       ctx.revert();
     };
-  }, [loading]);
+  }, []);
 
   return (
     <>
-      <Preloader onComplete={() => setLoading(false)} />
       <CustomCursor />
       <Navigation />
       <FloatingActions />
