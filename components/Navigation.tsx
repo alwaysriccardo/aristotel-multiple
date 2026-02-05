@@ -22,9 +22,17 @@ const Navigation: React.FC = () => {
     
     // Delay scroll to allow menu to close first (mobile)
     setTimeout(() => {
-      const element = document.getElementById(targetId);
-      if (element) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (targetId === 'contact') {
+        // For contact/footer, scroll to the very bottom of the page
+        window.scrollTo({
+          top: document.documentElement.scrollHeight,
+          behavior: 'smooth'
+        });
+      } else {
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
       }
     }, 300);
   };
