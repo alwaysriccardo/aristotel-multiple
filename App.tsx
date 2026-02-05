@@ -9,12 +9,14 @@ import Navigation from './components/Navigation';
 import CustomCursor from './components/CustomCursor';
 import FloatingActions from './components/FloatingActions';
 import LanguageSelector from './components/LanguageSelector';
+import { useLanguage } from './LanguageContext';
 import { CONTACT_INFO, LOCATIONS, RENOVATION_SERVICES, CLEANING_SERVICES, FEATURED_PROJECTS, CLEANING_PROJECTS, REVIEWS } from './constants';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const App: React.FC = () => {
   const [loading, setLoading] = useState(true);
+  const { t } = useLanguage();
   const wrapperRef = useRef<HTMLDivElement>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
   
@@ -167,10 +169,10 @@ const App: React.FC = () => {
           
           <div className="relative z-20 text-center text-swiss-cream mix-blend-difference px-4 max-w-6xl mx-auto">
             <h1 className="font-serif text-[7vw] md:text-[3.5vw] leading-tight tracking-wide italic reveal-text">
-              "WE ARE WHAT WE REPEATEDLY DO. EXCELLENCE, THEN, IS NOT AN ACT, BUT A HABIT."
+              "{t('hero_quote')}"
             </h1>
             <div className="mt-8 flex flex-col items-center reveal-text delay-300">
-              <p className="font-display text-sm md:text-base tracking-[0.3em] uppercase">— ARISTOTLE</p>
+              <p className="font-display text-sm md:text-base tracking-[0.3em] uppercase">{t('hero_author')}</p>
               <div className="h-16 w-px bg-white/50 mt-8 mb-4"></div>
               <ArrowDown className="animate-bounce" />
             </div>
@@ -181,24 +183,18 @@ const App: React.FC = () => {
         <section className="py-32 px-6 md:px-20 max-w-[1800px] mx-auto grid md:grid-cols-2 gap-16">
           <div>
             <h2 className="font-display text-4xl md:text-6xl leading-tight reveal-text text-swiss-dark">
-              YOUR TRUSTED <br />
-              <span className="text-swiss-gold italic font-serif">Renovation Partner</span>
+              {t('intro_title')} <br />
+              <span className="text-swiss-gold italic font-serif">{t('intro_subtitle')}</span>
             </h2>
           </div>
           <div className="font-body text-xl font-light leading-relaxed text-swiss-stone space-y-8 reveal-text">
             <p>
-              Operating across Switzerland, we provide professional renovation and cleaning services 
-              for residential and commercial properties. Our experienced team delivers quality workmanship 
-              on time and within budget.
-            </p>
-            <p>
-              From full apartment renovations to post-construction cleaning, we handle projects of all sizes. 
-              Licensed, insured, and committed to getting the job done right.
+              {t('intro_desc')}
             </p>
             <div className="flex gap-4 items-center text-swiss-dark font-medium uppercase tracking-widest text-sm pt-8">
-              <span>Est. 2026</span>
+              <span>{t('intro_est')}</span>
               <span className="w-2 h-2 rounded-full bg-swiss-gold"></span>
-              <span>Licensed & Insured</span>
+              <span>{t('intro_licensed')}</span>
             </div>
           </div>
         </section>
@@ -218,8 +214,8 @@ const App: React.FC = () => {
         {/* PROJECTS STACK */}
         <section id="projects" className="py-24 bg-swiss-dark text-swiss-cream relative px-4 md:px-0">
           <div className="text-center mb-24 reveal-text">
-            <span className="text-xs uppercase tracking-[0.3em] text-swiss-gold">Recent Work</span>
-            <h2 className="font-display text-4xl md:text-6xl mt-4">Completed Projects</h2>
+            <span className="text-xs uppercase tracking-[0.3em] text-swiss-gold">{t('projects_subtitle')}</span>
+            <h2 className="font-display text-4xl md:text-6xl mt-4">{t('projects_title')}</h2>
           </div>
 
           <div className="max-w-6xl mx-auto pb-20">
@@ -245,7 +241,7 @@ const App: React.FC = () => {
                       href={`mailto:${CONTACT_INFO.email}?subject=Quote Request: ${project.title}`}
                       className="flex items-center gap-4 text-swiss-dark uppercase tracking-widest text-xs group-hover:gap-6 transition-all mt-8 shine-effect px-4 py-2 border border-swiss-dark/30 rounded-full hover:bg-swiss-dark/10"
                     >
-                      Get a Free Quote <ArrowRight size={16} />
+                      {t('project_btn')} <ArrowRight size={16} />
                     </a>
                   </div>
                   <div className="h-full w-full overflow-hidden relative">
@@ -270,8 +266,8 @@ const App: React.FC = () => {
            
            <div className="max-w-7xl mx-auto relative z-10">
              <div className="text-center mb-12 reveal-text">
-               <span className="text-xs uppercase tracking-[0.3em] text-swiss-gold">What We Do</span>
-               <h2 className="font-display text-3xl md:text-4xl mt-4">Renovation Services</h2>
+               <span className="text-xs uppercase tracking-[0.3em] text-swiss-gold">{t('reno_subtitle')}</span>
+               <h2 className="font-display text-3xl md:text-4xl mt-4">{t('reno_title')}</h2>
              </div>
 
              <div className="reveal-text grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4 max-w-6xl mx-auto">
@@ -307,12 +303,12 @@ const App: React.FC = () => {
                  All work performed by experienced professionals. Free quotes available.
                </p>
                <a
-                 href={`mailto:${CONTACT_INFO.email}?subject=Renovation Quote Request`}
-                 className="inline-flex items-center gap-3 bg-swiss-gold hover:bg-[#b89448] text-white font-display text-sm uppercase tracking-wider px-8 py-4 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 shine-effect group"
-               >
-                 Get a Quote
-                 <Mail className="w-4 h-4 group-hover:rotate-12 transition-transform" />
-               </a>
+                href={`mailto:${CONTACT_INFO.email}?subject=Renovation Quote Request`}
+                className="inline-flex items-center gap-3 bg-swiss-gold hover:bg-[#b89448] text-white font-display text-sm uppercase tracking-wider px-8 py-4 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 shine-effect group"
+              >
+                {t('reno_quote_btn')}
+                <Mail className="w-4 h-4 group-hover:rotate-12 transition-transform" />
+              </a>
              </div>
            </div>
         </section>
@@ -321,11 +317,8 @@ const App: React.FC = () => {
         <section className="py-32 bg-swiss-cream text-swiss-dark relative overflow-hidden">
           <div className="max-w-full">
             <div className="text-center mb-12 reveal-text px-6 md:px-20">
-              <span className="text-xs uppercase tracking-[0.3em] text-swiss-gold">Professional Cleaning</span>
-              <h2 className="font-display text-4xl md:text-5xl mt-4">Cleaning Services</h2>
-              <p className="font-body text-swiss-stone mt-6 max-w-2xl mx-auto">
-                Thorough cleaning services for residential and commercial properties. From routine maintenance to deep post-construction cleanup.
-              </p>
+              <span className="text-xs uppercase tracking-[0.3em] text-swiss-gold">{t('clean_subtitle')}</span>
+              <h2 className="font-display text-4xl md:text-5xl mt-4">{t('clean_title')}</h2>
             </div>
 
             {/* Horizontal Scrolling Carousel */}
@@ -388,14 +381,14 @@ const App: React.FC = () => {
           <div className="max-w-7xl mx-auto px-6 md:px-20">
             <div className="flex items-center justify-between mb-12 reveal-text">
               <div>
-                <h2 className="font-display text-3xl md:text-4xl">Client Reviews</h2>
+                <h2 className="font-display text-3xl md:text-4xl">{t('reviews_title')}</h2>
                 <div className="flex items-center gap-2 mt-3">
                   <div className="flex">
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="w-5 h-5 fill-swiss-gold text-swiss-gold" />
                     ))}
                   </div>
-                  <span className="text-sm text-swiss-stone ml-2">4.9 • 44+ 5-star reviews</span>
+                  <span className="text-sm text-swiss-stone ml-2">{t('reviews_rating')}</span>
                 </div>
               </div>
             </div>
@@ -465,13 +458,13 @@ const App: React.FC = () => {
                       filter: 'drop-shadow(0 5px 10px rgba(0,0,0,0.15))',
                     }}
                   >
-                    CONTACT US
+                    {t('footer_contact_btn')}
                   </span>
                   <div className="absolute inset-0 -translate-x-full animate-shine bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
                 </a>
                 
                 <p className="text-[10px] md:text-base font-serif italic text-[#6B5D4F] animate-pulse">
-                  Click to get your personalized quote today →
+                  {t('footer_btn_cta')}
                 </p>
               </div>
 
@@ -482,7 +475,7 @@ const App: React.FC = () => {
                   <div>
                     <input
                       type="text"
-                      placeholder="Your Name"
+                      placeholder={t('footer_form_name')}
                       className="w-full px-2.5 py-1.5 md:px-4 md:py-3 text-xs md:text-base bg-white/80 border border-swiss-dark/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-swiss-gold focus:border-transparent transition-all text-swiss-dark placeholder:text-[#8B7355]"
                       required
                     />
@@ -490,7 +483,7 @@ const App: React.FC = () => {
                   <div>
                     <input
                       type="email"
-                      placeholder="Your Email"
+                      placeholder={t('footer_form_email')}
                       className="w-full px-2.5 py-1.5 md:px-4 md:py-3 text-xs md:text-base bg-white/80 border border-swiss-dark/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-swiss-gold focus:border-transparent transition-all text-swiss-dark placeholder:text-[#8B7355]"
                       required
                     />
@@ -498,13 +491,13 @@ const App: React.FC = () => {
                   <div>
                     <input
                       type="tel"
-                      placeholder="Phone Number"
+                      placeholder={t('footer_form_phone')}
                       className="w-full px-2.5 py-1.5 md:px-4 md:py-3 text-xs md:text-base bg-white/80 border border-swiss-dark/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-swiss-gold focus:border-transparent transition-all text-swiss-dark placeholder:text-[#8B7355]"
                     />
                   </div>
                   <div>
                     <textarea
-                      placeholder="Tell us about your project..."
+                      placeholder={t('footer_form_message')}
                       rows={2}
                       className="w-full px-2.5 py-1.5 md:px-4 md:py-3 text-xs md:text-base bg-white/80 border border-swiss-dark/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-swiss-gold focus:border-transparent transition-all text-swiss-dark placeholder:text-[#8B7355] resize-none md:rows-3"
                       required
