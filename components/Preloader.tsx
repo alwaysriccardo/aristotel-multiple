@@ -57,7 +57,7 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
         {/* Logo */}
         <div className="relative">
           <img 
-            src="/logoaristotel.png" 
+            src="/thisisthelogo.png" 
             alt="Aristotel Multiple"
             className="w-40 h-40 md:w-56 md:h-56 object-contain"
           />
