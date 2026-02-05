@@ -9,6 +9,8 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef<HTMLDivElement>(null);
+  const [imageLoaded, setImageLoaded] = React.useState(false);
+  const [imageError, setImageError] = React.useState(false);
 
   useEffect(() => {
     // Create timeline
@@ -55,12 +57,28 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
     >
       <div ref={contentRef} className="flex flex-col items-center gap-8">
         {/* Logo */}
-        <div className="relative">
+        <div className="relative w-40 h-40 md:w-56 md:h-56 flex items-center justify-center bg-white/10 rounded-lg">
           <img 
             src="/thisisthelogo.png" 
             alt="Aristotel Multiple"
-            className="w-40 h-40 md:w-56 md:h-56 object-contain"
+            className="w-full h-full object-contain"
+            onLoad={() => {
+              console.log('✅ Logo loaded successfully!');
+              setImageLoaded(true);
+            }}
+            onError={(e) => {
+              console.error('❌ Logo failed to load!');
+              console.error('Attempted path:', e.currentTarget.src);
+              setImageError(true);
+            }}
+            style={{ display: imageError ? 'none' : 'block' }}
           />
+          {imageError && (
+            <div className="text-[#8B7355] text-center text-sm">
+              <p>Logo not found</p>
+              <p className="text-xs opacity-50">/thisisthelogo.png</p>
+            </div>
+          )}
         </div>
         
         {/* Company Name */}
