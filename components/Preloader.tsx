@@ -30,7 +30,7 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
         <img 
           src="/thisisthelogo.png" 
           alt="Aristotel Multiple"
-          className="w-40 h-40 md:w-56 md:h-56 object-contain"
+          className="w-64 h-64 md:w-80 md:h-80 object-contain"
         />
       </div>
     </div>
