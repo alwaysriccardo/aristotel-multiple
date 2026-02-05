@@ -226,7 +226,7 @@ const App: React.FC = () => {
                   <div className="p-8 md:p-12 flex flex-col justify-between z-10 bg-[#D4C5B0]">
                     <div>
                       <span className="font-display text-6xl md:text-8xl opacity-10 absolute top-4 left-6 text-[#8B7355]">{project.id}</span>
-                      <h3 className="font-serif text-3xl md:text-4xl italic mt-12 mb-2 text-swiss-dark">{t(`project_${project.id}_title` as TranslationKey)}</h3>
+                      <h3 className="font-serif text-3xl md:text-4xl italic mt-12 mb-2 text-swiss-dark">{t(`project_${parseInt(project.id)}_title` as TranslationKey)}</h3>
                       <div className="flex flex-wrap gap-2 mb-6">
                         {project.categories.map(cat => (
                           <span key={cat} className="text-[10px] uppercase tracking-wider border border-swiss-dark/20 px-2 py-1 rounded-full text-swiss-dark/60">
@@ -235,7 +235,7 @@ const App: React.FC = () => {
                         ))}
                       </div>
                       <p className="text-[#6B5D4F] font-light leading-relaxed">
-                        {t(`project_${project.id}_desc` as TranslationKey)}
+                        {t(`project_${parseInt(project.id)}_desc` as TranslationKey)}
                       </p>
                     </div>
                     <a 
@@ -346,7 +346,7 @@ const App: React.FC = () => {
                   </div>
                   
                   <div className="p-6 md:p-8">
-                    <h3 className="font-serif text-xl md:text-2xl italic mb-3">{t(`clean_${project.id}_title` as TranslationKey)}</h3>
+                    <h3 className="font-serif text-xl md:text-2xl italic mb-3">{t(`clean_${parseInt(project.id)}_title` as TranslationKey)}</h3>
                     <div className="flex flex-wrap gap-2 mb-4">
                       {project.categories.map(cat => (
                         <span key={cat} className="text-[10px] uppercase tracking-wider border border-swiss-dark/20 px-3 py-1 rounded-full text-swiss-stone">
@@ -354,7 +354,7 @@ const App: React.FC = () => {
                         </span>
                       ))}
                     </div>
-                    <p className="text-swiss-stone leading-relaxed text-sm md:text-base">{t(`clean_${project.id}_desc` as TranslationKey)}</p>
+                    <p className="text-swiss-stone leading-relaxed text-sm md:text-base">{t(`clean_${parseInt(project.id)}_desc` as TranslationKey)}</p>
                   </div>
                 </div>
               ))}
