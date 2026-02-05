@@ -79,7 +79,7 @@ export const translations = {
     // Footer
     footer_title: "BEREIT ZU BEGINNEN?",
     footer_subtitle: "Lassen Sie uns Ihre Vision verwirklichen",
-    footer_contact_btn: "KONTAKTIEREN SIE UNS",
+    footer_contact_btn: "KONTAKT",
     footer_btn_cta: "Klicken Sie, um Ihr persönliches Angebot zu erhalten →",
     footer_form_name: "Ihr Name",
     footer_form_email: "Ihre E-Mail",
