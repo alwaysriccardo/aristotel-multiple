@@ -7,65 +7,44 @@ interface PreloaderProps {
 
 const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const logoRef = useRef<HTMLImageElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
   const progressRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Wait a moment to ensure DOM is ready
-    const initAnimation = () => {
-      if (!logoRef.current || !progressRef.current) return;
-
-      // Set initial states explicitly
-      gsap.set(logoRef.current, { scale: 0.75, opacity: 0, visibility: 'visible' });
-      gsap.set(progressRef.current, { width: 0 });
-
-      const tl = gsap.timeline({
-        onComplete: () => {
+    // Create timeline
+    const tl = gsap.timeline({
+      delay: 0.3,
+      onComplete: () => {
+        setTimeout(() => {
           onComplete();
-          if (containerRef.current) {
-            containerRef.current.style.display = 'none';
-          }
-        }
-      });
+        }, 100);
+      }
+    });
 
-      // Reveal logo with scale and fade
-      tl.to(logoRef.current, {
-        scale: 1,
-        opacity: 1,
-        duration: 1,
-        ease: "power3.out"
-      })
-      // Progress bar
-      .to(progressRef.current, {
-        width: "100%",
-        duration: 1.5,
-        ease: "power2.inOut"
-      }, "-=0.5")
-      // Slight pulse effect
-      .to(logoRef.current, {
-        scale: 1.05,
-        duration: 0.3,
-        ease: "power1.inOut",
-        yoyo: true,
-        repeat: 1
-      })
-      // Fade out logo
-      .to(logoRef.current, {
-        scale: 0.9,
-        opacity: 0,
-        duration: 0.5
-      })
-      // Slide up curtain
-      .to(containerRef.current, {
-        yPercent: -100,
-        duration: 1.2,
-        ease: "power4.inOut"
-      });
-    };
-
-    // Small delay to ensure everything is mounted
-    const timer = setTimeout(initAnimation, 100);
-    return () => clearTimeout(timer);
+    // Animate content in
+    tl.fromTo(contentRef.current, 
+      { opacity: 0, scale: 0.8 },
+      { opacity: 1, scale: 1, duration: 0.8, ease: "power2.out" }
+    )
+    // Animate progress bar
+    .to(progressRef.current, {
+      scaleX: 1,
+      duration: 1.5,
+      ease: "power2.inOut"
+    }, "-=0.3")
+    // Fade out content
+    .to(contentRef.current, {
+      opacity: 0,
+      scale: 1.1,
+      duration: 0.6,
+      ease: "power2.in"
+    })
+    // Slide container up
+    .to(containerRef.current, {
+      yPercent: -100,
+      duration: 0.8,
+      ease: "power3.inOut"
+    }, "-=0.2");
 
   }, [onComplete]);
 
@@ -74,24 +53,28 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
       ref={containerRef} 
       className="fixed inset-0 z-[10000] bg-gradient-to-br from-[#E8DCC8] via-[#D4C5B0] to-[#C9A961] flex flex-col justify-center items-center"
     >
-      <div className="mb-8 flex items-center justify-center">
-        <img 
-          ref={logoRef} 
-          src="/logoaristotel.png" 
-          alt="Aristotel Multiple Logo"
-          className="w-48 md:w-64 h-auto max-w-full"
-          onError={(e) => {
-            console.error('Logo failed to load');
-            e.currentTarget.style.display = 'none';
-          }}
-          onLoad={() => console.log('Logo loaded successfully')}
-        />
-      </div>
-      <div className="w-64 h-[2px] bg-white/30 relative overflow-hidden rounded-full">
-        <div 
-          ref={progressRef} 
-          className="absolute left-0 top-0 h-full bg-gradient-to-r from-[#C9A961] to-white w-0 rounded-full" 
-        />
+      <div ref={contentRef} className="flex flex-col items-center gap-8">
+        {/* Logo */}
+        <div className="relative">
+          <img 
+            src="/logoaristotel.png" 
+            alt="Aristotel Multiple"
+            className="w-40 h-40 md:w-56 md:h-56 object-contain"
+          />
+        </div>
+        
+        {/* Company Name */}
+        <h1 className="font-display text-2xl md:text-3xl font-bold text-[#8B7355] tracking-tight">
+          ARISTOTEL MULTIPLE
+        </h1>
+        
+        {/* Progress Bar Container */}
+        <div className="w-64 h-1 bg-white/20 relative overflow-hidden rounded-full">
+          <div 
+            ref={progressRef} 
+            className="absolute left-0 top-0 h-full w-full bg-gradient-to-r from-[#C9A961] to-white origin-left scale-x-0 rounded-full"
+          />
+        </div>
       </div>
     </div>
   );
