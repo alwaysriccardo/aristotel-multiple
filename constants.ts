@@ -99,7 +99,7 @@ export const CLEANING_PROJECTS: ServiceItem[] = [
     id: "01",
     title: "Post-Renovation Cleaning",
     description: "Removed all construction dust and debris from 120m² apartment after complete renovation. Includes dust removal from all surfaces, floor cleaning, and window washing. Ready for immediate move-in.",
-    image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=2574&auto=format&fit=crop",
+    image: "/renovation-cleaning.jpg",
     categories: ["Deep Cleaning", "Post-Renovation"]
   },
   {
