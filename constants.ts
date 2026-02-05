@@ -40,21 +40,21 @@ export const FEATURED_PROJECTS: ServiceItem[] = [
     id: "01",
     title: "3-Bedroom Apartment Renovation",
     description: "Full interior renovation including new flooring installation, wall insulation upgrade, and complete painting. Completed in 6 weeks with minimal disruption to neighboring units.",
-    image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=2574&auto=format&fit=crop",
+    image: "/01.jpeg",
     categories: ["Flooring", "Insulation", "Painting"]
   },
   {
     id: "02",
     title: "Office Space Refurbishment",
     description: "Commercial property makeover: drywall installation, professional painting, and decorative finishes. Project delivered on schedule for client move-in deadline.",
-    image: "https://images.unsplash.com/photo-1631679706909-1844bbd07221?q=80&w=2592&auto=format&fit=crop",
+    image: "/02.jpeg",
     categories: ["Painting", "Plastering", "Commercial"]
   },
   {
     id: "03",
     title: "Historic Building Restoration",
     description: "Facade renovation and exterior painting for 100-year-old property. Preserved original character while meeting modern building standards.",
-    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2653&auto=format&fit=crop",
+    image: "/03.jpg",
     categories: ["Facade", "Painting"]
   }
 ];
@@ -99,21 +99,21 @@ export const CLEANING_PROJECTS: ServiceItem[] = [
     id: "01",
     title: "Post-Renovation Cleaning",
     description: "Removed all construction dust and debris from 120m² apartment after complete renovation. Includes dust removal from all surfaces, floor cleaning, and window washing. Ready for immediate move-in.",
-    image: "/01.jpeg",
+    image: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?q=80&w=2574&auto=format&fit=crop",
     categories: ["Deep Cleaning", "Post-Renovation"]
   },
   {
     id: "02",
     title: "Move-Out Cleaning Service",
     description: "Complete end-of-tenancy cleaning including kitchen appliances, bathroom sanitization, and window cleaning. Meets Swiss rental standards for deposit return.",
-    image: "/02.jpeg",
+    image: "https://images.unsplash.com/photo-1628177142898-93e36e4e3a50?q=80&w=2670&auto=format&fit=crop",
     categories: ["Move-Out", "Window Cleaning"]
   },
   {
     id: "03",
     title: "Office Deep Cleaning",
     description: "Regular deep cleaning service for 200m² office space. Includes floor care, desk sanitization, and common area maintenance. Scheduled during off-hours to avoid business disruption.",
-    image: "/03.jpg",
+    image: "https://images.unsplash.com/photo-1563453392212-326f5e854473?q=80&w=2670&auto=format&fit=crop",
     categories: ["Deep Cleaning", "Commercial"]
   },
   {
