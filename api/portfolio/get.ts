@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { getFromR2 } from '../utils/r2Client';
+import { getFromR2 } from '../utils/r2Client.js';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Enable CORS

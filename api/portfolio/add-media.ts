@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { getFromR2, uploadToR2 } from '../utils/r2Client';
-import { verifyToken, extractToken } from '../utils/auth';
+import { getFromR2, uploadToR2 } from '../utils/r2Client.js';
+import { verifyToken, extractToken } from '../utils/auth.js';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Enable CORS

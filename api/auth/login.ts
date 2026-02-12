@@ -1,5 +1,5 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { verifyPassword, generateToken } from '../utils/auth';
+import { verifyPassword, generateToken } from '../utils/auth.js';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Enable CORS
