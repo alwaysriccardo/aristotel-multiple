@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { ChevronLeft, ChevronRight, X, Lock } from 'lucide-react';
 import type { Portfolio, Project, MediaItem } from '../../portfolioTypes';
 
 export const PortfolioSection: React.FC = () => {
@@ -49,15 +49,35 @@ export const PortfolioSection: React.FC = () => {
     );
   }
 
-  if (portfolio.projects.length === 0) {
-    return null; // Don't show section if no projects
-  }
-
   return (
     <>
       <section style={styles.section} id="portfolio">
         <div style={styles.container}>
-          <h2 style={styles.sectionTitle}>OUR PORTFOLIO</h2>
+          <div style={styles.header}>
+            <h2 style={styles.sectionTitle}>OUR PORTFOLIO</h2>
+            <a 
+              href="/admin" 
+              style={styles.adminBtn}
+              title="Admin Login"
+            >
+              <Lock size={16} />
+              <span>Admin</span>
+            </a>
+          </div>
+
+          {portfolio.projects.length === 0 ? (
+            <div style={styles.emptyState}>
+              <p style={styles.emptyTitle}>No projects yet</p>
+              <p style={styles.emptyText}>
+                Portfolio projects will appear here once created by the admin.
+              </p>
+              <a href="/admin" style={styles.emptyButton}>
+                <Lock size={18} />
+                <span>Go to Admin Panel</span>
+              </a>
+            </div>
+          ) : (
+            <>
           
           {/* Project Tabs */}
           <div style={styles.tabsWrapper}>
@@ -97,7 +117,7 @@ export const PortfolioSection: React.FC = () => {
           </div>
 
           {/* Media Grid */}
-          {selectedProject && (
+          {selectedProject && portfolio.projects.length > 0 && (
             <div style={styles.mediaGrid}>
               {selectedProject.media.length === 0 ? (
                 <p style={styles.emptyText}>No media available for this project</p>
@@ -139,6 +159,8 @@ export const PortfolioSection: React.FC = () => {
                 ))
               )}
             </div>
+          )}
+          </>
           )}
         </div>
       </section>
@@ -187,12 +209,71 @@ const styles = {
     maxWidth: '1400px',
     margin: '0 auto',
   },
+  header: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'relative' as const,
+    marginBottom: '60px',
+  },
   sectionTitle: {
     fontSize: '48px',
     fontWeight: '700',
     textAlign: 'center' as const,
-    marginBottom: '60px',
     letterSpacing: '2px',
+    margin: 0,
+  },
+  adminBtn: {
+    position: 'absolute' as const,
+    right: 0,
+    top: '50%',
+    transform: 'translateY(-50%)',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '6px',
+    padding: '8px 16px',
+    background: 'rgba(33, 150, 243, 0.1)',
+    color: '#2196F3',
+    border: '1px solid rgba(33, 150, 243, 0.3)',
+    borderRadius: '20px',
+    fontSize: '14px',
+    fontWeight: '500',
+    textDecoration: 'none',
+    transition: 'all 0.3s',
+    cursor: 'pointer',
+  },
+  emptyState: {
+    textAlign: 'center' as const,
+    padding: '80px 20px',
+    background: 'white',
+    borderRadius: '16px',
+    boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+  },
+  emptyTitle: {
+    fontSize: '32px',
+    fontWeight: '600',
+    color: '#333',
+    marginBottom: '16px',
+  },
+  emptyText: {
+    fontSize: '18px',
+    color: '#666',
+    marginBottom: '32px',
+    lineHeight: '1.6',
+  },
+  emptyButton: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '10px',
+    padding: '14px 28px',
+    background: '#2196F3',
+    color: 'white',
+    borderRadius: '8px',
+    fontSize: '16px',
+    fontWeight: '600',
+    textDecoration: 'none',
+    transition: 'all 0.3s',
+    boxShadow: '0 4px 12px rgba(33, 150, 243, 0.3)',
   },
   tabsWrapper: {
     display: 'flex',
