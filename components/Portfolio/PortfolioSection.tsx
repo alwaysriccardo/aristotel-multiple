@@ -203,7 +203,7 @@ export const PortfolioSection: React.FC = () => {
 const styles = {
   section: {
     padding: '80px 20px',
-    background: '#f9f9f9',
+    background: '#F2F0EB',
   },
   container: {
     maxWidth: '1400px',
