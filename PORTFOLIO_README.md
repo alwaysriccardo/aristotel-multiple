@@ -64,15 +64,16 @@ Visit `https://your-domain.com/admin`
 ```
 /api
   /auth
-    - login.ts                → Authentication endpoint
+    - login.ts                    → Authentication endpoint
   /portfolio
-    - get.ts                 → Fetch portfolio data
-    - create-project.ts      → Create new project
-    - upload.ts              → Upload media
-    - delete.ts              → Delete project/media
+    - get.ts                      → Fetch portfolio data
+    - create-project.ts           → Create new project
+    - generate-upload-url.ts      → Generate presigned R2 upload URLs
+    - add-media.ts                → Add media metadata after upload
+    - delete.ts                   → Delete project/media
   /utils
-    - r2Client.ts            → R2 storage utilities
-    - auth.ts                → JWT authentication
+    - r2Client.ts                 → R2 storage utilities
+    - auth.ts                     → JWT authentication
 
 /components
   /Admin
@@ -155,15 +156,38 @@ Headers:
 }
 ```
 
-#### `POST /api/portfolio/upload`
-Upload media to a project (requires authentication)
+#### `POST /api/portfolio/generate-upload-url`
+Generate presigned URL for direct R2 upload (requires authentication)
+```json
+Request:
+{
+  "fileName": "image.jpg",
+  "contentType": "image/jpeg",
+  "folderName": "kitchen-renovation"
+}
+
+Headers:
+{
+  "Authorization": "Bearer jwt_token_here"
+}
+
+Response:
+{
+  "success": true,
+  "uploadUrl": "https://r2-presigned-url...",
+  "publicUrl": "https://pub-xxx.r2.dev/projects/...",
+  "filePath": "projects/kitchen-renovation/abc123.jpg"
+}
+```
+
+#### `POST /api/portfolio/add-media`
+Add media metadata after successful upload (requires authentication)
 ```json
 Request:
 {
   "projectId": "proj_123",
-  "file": "base64_encoded_file",
-  "fileName": "image.jpg",
-  "contentType": "image/jpeg",
+  "publicUrl": "https://pub-xxx.r2.dev/projects/...",
+  "mediaType": "image",
   "caption": "Optional caption"
 }
 
@@ -216,9 +240,9 @@ Headers:
 
 ## Limitations
 
-- Max file size: ~4.5MB per file (Vercel limit)
-- For larger videos, consider direct R2 upload or video compression
-- Files are sent as base64 (increases payload size by ~33%)
+- ✅ **No file size limits** - Files upload directly to R2
+- R2 supports files up to 5TB
+- Presigned URLs expire after 10 minutes (upload must complete within this time)
 
 ## Future Enhancements
 

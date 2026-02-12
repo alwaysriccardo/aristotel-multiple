@@ -106,14 +106,15 @@ After adding environment variables:
 ## 📁 Files Created
 
 ```
-/api                          → Backend API routes
-  /auth/login.ts             → Admin login
-  /portfolio/get.ts          → Fetch portfolio
-  /portfolio/create-project.ts → Create project
-  /portfolio/upload.ts       → Upload media
-  /portfolio/delete.ts       → Delete items
-  /utils/r2Client.ts         → R2 storage client
-  /utils/auth.ts             → Authentication
+/api                               → Backend API routes
+  /auth/login.ts                  → Admin login
+  /portfolio/get.ts               → Fetch portfolio
+  /portfolio/create-project.ts    → Create project
+  /portfolio/generate-upload-url.ts → Generate presigned URLs (NEW!)
+  /portfolio/add-media.ts         → Add media metadata (NEW!)
+  /portfolio/delete.ts            → Delete items
+  /utils/r2Client.ts              → R2 storage client
+  /utils/auth.ts                  → Authentication
 
 /components
   /Admin                      → Admin dashboard
@@ -140,7 +141,8 @@ SETUP.md                      → Setup instructions
 
 ✅ Project organization (folders)  
 ✅ Image & video support  
-✅ Drag & drop uploads (coming soon - currently select files)  
+✅ **No file size limits** - Direct upload to R2!  
+✅ Upload files of any size (up to 5TB supported by R2)  
 ✅ Delete media & projects  
 ✅ Lightbox viewer  
 ✅ Horizontal scrolling tabs  

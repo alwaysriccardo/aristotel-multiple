@@ -71,49 +71,71 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
 
     try {
       const token = localStorage.getItem('admin_token');
+      const project = portfolio.projects.find(p => p.id === selectedProject);
+      
+      if (!project) {
+        throw new Error('Project not found');
+      }
 
       for (const file of files) {
-        const reader = new FileReader();
-        
-        await new Promise<void>((resolve, reject) => {
-          reader.onload = async () => {
-            try {
-              const base64 = (reader.result as string).split(',')[1];
-              
-              const response = await fetch('/api/portfolio/upload', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                  'Authorization': `Bearer ${token}`,
-                },
-                body: JSON.stringify({
-                  projectId: selectedProject,
-                  file: base64,
-                  fileName: file.name,
-                  contentType: file.type,
-                  caption: '',
-                }),
-              });
-
-              if (!response.ok) {
-                throw new Error('Upload failed');
-              }
-
-              resolve();
-            } catch (error) {
-              reject(error);
-            }
-          };
-          
-          reader.onerror = reject;
-          reader.readAsDataURL(file);
+        // Step 1: Get presigned upload URL
+        const urlResponse = await fetch('/api/portfolio/generate-upload-url', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            fileName: file.name,
+            contentType: file.type,
+            folderName: project.folderName,
+          }),
         });
+
+        if (!urlResponse.ok) {
+          throw new Error('Failed to generate upload URL');
+        }
+
+        const { uploadUrl, publicUrl } = await urlResponse.json();
+
+        // Step 2: Upload directly to R2
+        const uploadResponse = await fetch(uploadUrl, {
+          method: 'PUT',
+          body: file,
+          headers: {
+            'Content-Type': file.type,
+          },
+        });
+
+        if (!uploadResponse.ok) {
+          throw new Error('Failed to upload file to R2');
+        }
+
+        // Step 3: Update portfolio metadata
+        const mediaType = file.type.startsWith('video/') ? 'video' : 'image';
+        const metadataResponse = await fetch('/api/portfolio/add-media', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            projectId: selectedProject,
+            publicUrl: publicUrl,
+            mediaType: mediaType,
+            caption: '',
+          }),
+        });
+
+        if (!metadataResponse.ok) {
+          throw new Error('Failed to update portfolio metadata');
+        }
       }
 
       await loadPortfolio();
     } catch (error) {
       console.error('Upload failed:', error);
-      alert('Upload failed');
+      alert('Upload failed: ' + (error as Error).message);
     } finally {
       setUploading(false);
     }
