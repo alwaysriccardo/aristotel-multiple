@@ -14,9 +14,14 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
   const [showNewProjectForm, setShowNewProjectForm] = useState(false);
   const [newProjectTitle, setNewProjectTitle] = useState('');
   const [newProjectSubtitle, setNewProjectSubtitle] = useState('');
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   useEffect(() => {
     loadPortfolio();
+    
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const loadPortfolio = async () => {
@@ -241,9 +246,9 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
         </button>
       </header>
 
-      <div style={styles.content}>
+      <div style={isMobile ? styles.contentMobile : styles.content}>
         {/* Projects Sidebar */}
-        <aside style={styles.sidebar}>
+        <aside style={isMobile ? styles.sidebarMobile : styles.sidebar}>
           <div style={styles.sidebarHeader}>
             <h2 style={styles.sidebarTitle}>Projects</h2>
             <button onClick={() => setShowNewProjectForm(true)} style={styles.addBtn}>
@@ -306,17 +311,17 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
         </aside>
 
         {/* Main Content */}
-        <main style={styles.main}>
+        <main style={isMobile ? styles.mainMobile : styles.main}>
           {currentProject ? (
             <>
-              <div style={styles.mainHeader}>
-                <div>
-                  <h2 style={styles.projectName}>{currentProject.title}</h2>
+              <div style={isMobile ? styles.mainHeaderMobile : styles.mainHeader}>
+                <div style={isMobile ? {marginBottom: '16px', width: '100%'} : {}}>
+                  <h2 style={isMobile ? styles.projectNameMobile : styles.projectName}>{currentProject.title}</h2>
                   {currentProject.subtitle && (
                     <p style={styles.projectDesc}>{currentProject.subtitle}</p>
                   )}
                 </div>
-                <label style={styles.uploadBtn}>
+                <label style={isMobile ? styles.uploadBtnMobile : styles.uploadBtn}>
                   <Upload size={20} />
                   <span>{uploading ? 'Uploading...' : 'Upload Media'}</span>
                   <input
@@ -330,7 +335,7 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
                 </label>
               </div>
 
-              <div style={styles.mediaGrid}>
+              <div style={isMobile ? styles.mediaGridMobile : styles.mediaGrid}>
                 {currentProject.media.length === 0 ? (
                   <div style={styles.emptyState}>
                     <p>No media uploaded yet</p>
@@ -599,5 +604,55 @@ const styles = {
     minHeight: '100vh',
     fontSize: '20px',
     color: '#666',
+  },
+  // Mobile styles
+  contentMobile: {
+    display: 'flex',
+    flexDirection: 'column' as const,
+    minHeight: 'calc(100vh - 81px)',
+  },
+  sidebarMobile: {
+    width: '100%',
+    background: 'white',
+    borderBottom: '1px solid #e0e0e0',
+    display: 'flex',
+    flexDirection: 'column' as const,
+    maxHeight: '40vh',
+  },
+  mainMobile: {
+    flex: 1,
+    padding: '16px',
+    overflowY: 'auto' as const,
+  },
+  mainHeaderMobile: {
+    display: 'flex',
+    flexDirection: 'column' as const,
+    gap: '16px',
+    marginBottom: '20px',
+  },
+  projectNameMobile: {
+    fontSize: '20px',
+    fontWeight: '700',
+    margin: '0 0 4px 0',
+  },
+  uploadBtnMobile: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '10px',
+    padding: '14px 24px',
+    background: '#2196F3',
+    color: 'white',
+    border: 'none',
+    borderRadius: '8px',
+    cursor: 'pointer',
+    fontSize: '16px',
+    fontWeight: '600',
+    width: '100%',
+  },
+  mediaGridMobile: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(150px, 1fr))',
+    gap: '12px',
   },
 };
