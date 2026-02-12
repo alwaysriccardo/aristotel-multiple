@@ -78,64 +78,75 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
       }
 
       for (const file of files) {
-        // Step 1: Get presigned upload URL
-        const urlResponse = await fetch('/api/portfolio/generate-upload-url', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`,
-          },
-          body: JSON.stringify({
-            fileName: file.name,
-            contentType: file.type,
-            folderName: project.folderName,
-          }),
-        });
+        try {
+          // Step 1: Get presigned upload URL
+          const urlResponse = await fetch('/api/portfolio/generate-upload-url', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+              fileName: file.name,
+              contentType: file.type,
+              folderName: project.folderName,
+            }),
+          });
 
-        if (!urlResponse.ok) {
-          throw new Error('Failed to generate upload URL');
-        }
+          if (!urlResponse.ok) {
+            throw new Error('Failed to generate upload URL');
+          }
 
-        const { uploadUrl, publicUrl } = await urlResponse.json();
+          const { uploadUrl, publicUrl } = await urlResponse.json();
 
-        // Step 2: Upload directly to R2
-        const uploadResponse = await fetch(uploadUrl, {
-          method: 'PUT',
-          body: file,
-          headers: {
-            'Content-Type': file.type,
-          },
-        });
+          // Step 2: Upload directly to R2
+          console.log('Uploading to R2:', uploadUrl);
+          const uploadResponse = await fetch(uploadUrl, {
+            method: 'PUT',
+            body: file,
+            headers: {
+              'Content-Type': file.type,
+            },
+            mode: 'cors',
+          });
 
-        if (!uploadResponse.ok) {
-          throw new Error('Failed to upload file to R2');
-        }
+          if (!uploadResponse.ok) {
+            const errorText = await uploadResponse.text();
+            console.error('R2 upload failed:', uploadResponse.status, errorText);
+            throw new Error(`Failed to upload file to R2: ${uploadResponse.status}`);
+          }
 
-        // Step 3: Update portfolio metadata
-        const mediaType = file.type.startsWith('video/') ? 'video' : 'image';
-        const metadataResponse = await fetch('/api/portfolio/add-media', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`,
-          },
-          body: JSON.stringify({
-            projectId: selectedProject,
-            publicUrl: publicUrl,
-            mediaType: mediaType,
-            caption: '',
-          }),
-        });
+          // Step 3: Update portfolio metadata
+          const mediaType = file.type.startsWith('video/') ? 'video' : 'image';
+          const metadataResponse = await fetch('/api/portfolio/add-media', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+              projectId: selectedProject,
+              publicUrl: publicUrl,
+              mediaType: mediaType,
+              caption: '',
+            }),
+          });
 
-        if (!metadataResponse.ok) {
-          throw new Error('Failed to update portfolio metadata');
+          if (!metadataResponse.ok) {
+            throw new Error('Failed to update portfolio metadata');
+          }
+
+          console.log('File uploaded successfully:', file.name);
+        } catch (fileError) {
+          console.error(`Failed to upload ${file.name}:`, fileError);
+          // Continue with next file instead of stopping
         }
       }
 
       await loadPortfolio();
     } catch (error) {
       console.error('Upload failed:', error);
-      alert('Upload failed: ' + (error as Error).message);
+      alert('Upload failed: ' + (error as Error).message + '\nCheck browser console for details');
     } finally {
       setUploading(false);
     }
