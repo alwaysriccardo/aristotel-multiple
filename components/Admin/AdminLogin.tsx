@@ -25,17 +25,25 @@ export const AdminLogin: React.FC<AdminLoginProps> = ({ onLoginSuccess }) => {
         body: JSON.stringify({ username, password }),
       });
 
+      // Check if response is JSON
+      const contentType = response.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        console.error('Non-JSON response received:', await response.text());
+        throw new Error('Server error - please check environment variables are set in Vercel');
+      }
+
       const data: AuthResponse = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Login failed');
+        throw new Error(data.error || 'Invalid credentials');
       }
 
       // Store token in localStorage
       localStorage.setItem('admin_token', data.token);
       onLoginSuccess(data.token);
     } catch (err: any) {
-      setError(err.message || 'Login failed');
+      console.error('Login error:', err);
+      setError(err.message || 'Login failed - check console for details');
     } finally {
       setLoading(false);
     }
@@ -84,7 +92,7 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+    background: '#8B7355',
     padding: '20px',
   },
   loginBox: {
@@ -124,6 +132,8 @@ const styles = {
     borderRadius: '8px',
     transition: 'border-color 0.3s',
     outline: 'none',
+    cursor: 'text',
+    caretColor: '#333',
   },
   error: {
     color: '#e74c3c',
@@ -137,11 +147,11 @@ const styles = {
     padding: '14px',
     fontSize: '16px',
     fontWeight: '600',
-    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+    background: '#C9A959',
     color: 'white',
     border: 'none',
     borderRadius: '8px',
     cursor: 'pointer',
-    transition: 'transform 0.2s',
+    transition: 'all 0.3s',
   },
 };

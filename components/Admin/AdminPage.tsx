@@ -14,6 +14,13 @@ export const AdminPage: React.FC = () => {
       setIsAuthenticated(true);
     }
     setIsChecking(false);
+
+    // Hide custom cursor on admin pages
+    document.body.style.cursor = 'default';
+    
+    return () => {
+      document.body.style.cursor = '';
+    };
   }, []);
 
   const handleLoginSuccess = (token: string) => {
