@@ -69,6 +69,9 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
     const files = Array.from(e.target.files);
     setUploading(true);
 
+    let successCount = 0;
+    let failedFiles: string[] = [];
+
     try {
       const token = localStorage.getItem('admin_token');
       const project = portfolio.projects.find(p => p.id === selectedProject);
@@ -79,7 +82,10 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
 
       for (const file of files) {
         try {
+          console.log(`Uploading ${file.name}...`);
+          
           // Step 1: Get presigned upload URL
+          console.log('Step 1: Generating presigned URL...');
           const urlResponse = await fetch('/api/portfolio/generate-upload-url', {
             method: 'POST',
             headers: {
@@ -94,29 +100,34 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
           });
 
           if (!urlResponse.ok) {
+            const error = await urlResponse.text();
+            console.error('URL generation failed:', error);
             throw new Error('Failed to generate upload URL');
           }
 
           const { uploadUrl, publicUrl } = await urlResponse.json();
+          console.log('Presigned URL generated:', uploadUrl.substring(0, 50) + '...');
 
           // Step 2: Upload directly to R2
-          console.log('Uploading to R2:', uploadUrl);
+          console.log('Step 2: Uploading to R2...');
           const uploadResponse = await fetch(uploadUrl, {
             method: 'PUT',
             body: file,
             headers: {
               'Content-Type': file.type,
             },
-            mode: 'cors',
           });
 
           if (!uploadResponse.ok) {
             const errorText = await uploadResponse.text();
             console.error('R2 upload failed:', uploadResponse.status, errorText);
-            throw new Error(`Failed to upload file to R2: ${uploadResponse.status}`);
+            throw new Error(`Failed to upload to R2 (Status: ${uploadResponse.status}). Check CORS settings!`);
           }
 
+          console.log('R2 upload successful!');
+
           // Step 3: Update portfolio metadata
+          console.log('Step 3: Updating metadata...');
           const mediaType = file.type.startsWith('video/') ? 'video' : 'image';
           const metadataResponse = await fetch('/api/portfolio/add-media', {
             method: 'POST',
@@ -133,22 +144,32 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
           });
 
           if (!metadataResponse.ok) {
+            const error = await metadataResponse.text();
+            console.error('Metadata update failed:', error);
             throw new Error('Failed to update portfolio metadata');
           }
 
-          console.log('File uploaded successfully:', file.name);
+          console.log(`✅ ${file.name} uploaded successfully!`);
+          successCount++;
         } catch (fileError) {
           console.error(`Failed to upload ${file.name}:`, fileError);
-          // Continue with next file instead of stopping
+          failedFiles.push(file.name);
         }
       }
 
-      await loadPortfolio();
+      if (successCount > 0) {
+        await loadPortfolio();
+        alert(`✅ Successfully uploaded ${successCount} file(s)!${failedFiles.length > 0 ? `\n\n❌ Failed: ${failedFiles.join(', ')}` : ''}`);
+      } else {
+        alert('❌ All uploads failed. Check console (F12) for details.\n\nMost common issue: CORS not configured on R2 bucket.');
+      }
     } catch (error) {
-      console.error('Upload failed:', error);
-      alert('Upload failed: ' + (error as Error).message + '\nCheck browser console for details');
+      console.error('Upload process error:', error);
+      alert('Upload failed: ' + (error as Error).message + '\n\nCheck browser console (F12) for details.');
     } finally {
       setUploading(false);
+      // Reset file input
+      e.target.value = '';
     }
   };
 
