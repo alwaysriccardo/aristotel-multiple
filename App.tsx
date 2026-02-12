@@ -12,6 +12,8 @@ import LanguageSelector from './components/LanguageSelector';
 import { useLanguage } from './LanguageContext';
 import { TranslationKey } from './translations';
 import { CONTACT_INFO, LOCATIONS, RENOVATION_SERVICES, CLEANING_SERVICES, FEATURED_PROJECTS, CLEANING_PROJECTS, REVIEWS } from './constants';
+import { PortfolioSection } from './components/Portfolio/PortfolioSection';
+import { AdminPage } from './components/Admin/AdminPage';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -20,6 +22,9 @@ const App: React.FC = () => {
   const { t } = useLanguage();
   const wrapperRef = useRef<HTMLDivElement>(null);
   const carouselRef = useRef<HTMLDivElement>(null);
+  
+  // Check if we're on the admin page
+  const isAdminPage = window.location.pathname === '/admin';
   
   // Auto-scroll carousel
   useEffect(() => {
@@ -148,6 +153,11 @@ const App: React.FC = () => {
       ctx.revert();
     };
   }, []);
+
+  // Show admin page if on /admin route
+  if (isAdminPage) {
+    return <AdminPage />;
+  }
 
   return (
     <>
@@ -419,6 +429,9 @@ const App: React.FC = () => {
             </div>
           </div>
         </section>
+
+        {/* PORTFOLIO SECTION */}
+        <PortfolioSection />
 
       </div>
 
