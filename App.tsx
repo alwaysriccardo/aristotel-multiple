@@ -387,6 +387,9 @@ const App: React.FC = () => {
           </div>
         </section>
 
+        {/* PORTFOLIO SECTION */}
+        <PortfolioSection />
+
         {/* REVIEWS SECTION */}
         <section className="py-20 bg-swiss-dark text-swiss-cream relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-6 md:px-20">
@@ -429,9 +432,6 @@ const App: React.FC = () => {
             </div>
           </div>
         </section>
-
-        {/* PORTFOLIO SECTION */}
-        <PortfolioSection />
 
       </div>
 
